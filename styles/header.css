@@ -1,0 +1,26 @@
+.site-header {
+    background: var(--main-background-color);
+}
+
+.site-header * {
+    color: var(--main-text-color);
+}
+
+.site-header .site-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.site-nav ul {
+    padding: 0;
+    display: flex;
+}
+
+.site-nav ul li {
+    list-style: none;
+}
+
+.site-nav ul li a {
+    padding: 0.5rem 1rem;
+}

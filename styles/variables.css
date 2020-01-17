@@ -1,0 +1,12 @@
+:root {
+    /* COLORS */
+    --main-background-color: #000;
+    --main-text-color: lime;
+
+    /* DISTANCES */
+    --main-padding: 1rem;
+    --main-margin: 1rem;
+
+    /* BORDERS */
+    --main-border: 1px solid var(--main-text-color);
+}

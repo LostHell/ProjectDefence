@@ -1,0 +1,24 @@
+@import "reset.css";
+@import "variables.css";
+@import "typography.css";
+@import "header.css";
+@import "footer.css";
+
+/* Stick the footer always on the bottom of the page. */
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.site-content {
+    flex: 1;
+}
+
+/* Wrapper container. */
+
+.site-wrapper {
+    max-width: 60rem;
+    margin: 0 auto;
+}

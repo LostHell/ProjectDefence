@@ -1,0 +1,14 @@
+.site-footer {
+    background: var(--main-background-color);
+}
+
+.site-footer * {
+    color: var(--main-text-color);
+}
+
+@media screen and (min-width: 500px) {
+    .footer-content {
+        display: flex;
+        justify-content: space-between;
+    }
+}
