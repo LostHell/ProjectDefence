@@ -1,0 +1,60 @@
+/* TEXT, EMAIL, PASSWORD */
+input[type=text],
+input[type=email],
+input[type=password] {
+    font-family: 'Montserrat', sans-serif;
+    color: var(--main-text-dark-gray);
+    display: block;
+    width: 100%;
+    border: var(--main-border-width) solid var(--main-text-gray);
+    border-radius: var(--main-border-radius);
+    transition: var(--main-transition-slow);
+    padding: 0.5rem 0.5rem 0.5rem 0.35rem;
+    font-size: 0.85rem;
+}
+
+input[type=text]:hover,
+input[type=email]:hover,
+input[type=password]:hover,
+input[type=text]:focus,
+input[type=email]:focus,
+input[type=password]:focus {
+    border-color: var(--main-text-color);
+}
+
+input[type=text]:focus,
+input[type=email]:focus,
+input[type=password]:focus {
+    outline: none;
+}
+
+/* END OF TEXT, EMAIL, PASSWORD */
+/* SUBMIT */
+
+input[type=submit] {
+    cursor: pointer;
+    display: block;
+    width: var(--main-input-button-width);
+    background: var(--main-text-white);
+    color: var(--main-text-color);
+    border: var(--main-border-width) solid var(--main-text-color);
+    border-radius: var(--main-border-radius);
+    padding: 0.30rem 0.8rem;
+    font-size: 1rem;
+    transition: var(--main-transition-slow);
+}
+
+input[type=submit]:hover {
+    background: var(--main-text-color);
+    color: var(--main-text-white);
+}
+/* END OF SUBMIT */
+
+/* CHECKBOX */
+input[type=checkbox] {
+    cursor: pointer;
+    margin: 0 0.25rem;
+    /* A bit padding for usability. */
+    padding: 0.25rem;
+    background: var(--main-text-color);
+}

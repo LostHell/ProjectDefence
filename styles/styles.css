@@ -3,6 +3,9 @@
 @import "typography.css";
 @import "header.css";
 @import "footer.css";
+@import "links.css";
+@import "inputs.css";
+@import "home.css";
 
 /* Stick the footer always on the bottom of the page. */
 
