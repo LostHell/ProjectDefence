@@ -44,7 +44,8 @@ input[type=submit] {
     transition: var(--main-transition-slow);
 }
 
-input[type=submit]:hover {
+input[type=submit]:hover,
+input[type=submit]:focus {
     background: var(--main-text-color);
     color: var(--main-text-white);
 }

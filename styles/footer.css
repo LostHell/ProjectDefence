@@ -1,18 +1,81 @@
 .site-footer {
-    background: var(--main-background-color);
+    padding: 2rem 0;
+    background: linear-gradient(rgba(85, 0, 85, 0.65), rgba(75, 0, 75, 0.75)), url('../img/bg-11.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 .site-footer * {
+    color: var(--main-text-gray);
+}
+
+.site-footer .logo,
+.site-footer .testimonials h6,
+.site-footer .classes h6,
+.site-footer .contacts h6,
+.site-footer .site-credentials {
+    color: var(--main-text-white);
+}
+
+.site-footer .logo {
+    display: inline-block;
+    margin-top: 0.75rem;
+    border: var(--main-border-width) solid var(--main-text-color);
+    padding: 0.5rem 1rem;
+    border-radius: var(--main-border-radius);
+}
+
+.site-footer .site-slogan {
+    font-size: 0.85rem;
+}
+
+.site-footer .site-social {
+    display: flex;
+    justify-content: space-between;
+}
+
+.site-footer .site-social a {
+    padding: 0.5rem;
+}
+
+.site-footer .testimonials .quote {
+    font-size: 0.85rem;
+    font-style: italic;
+}
+
+.site-footer .testimonials .quote-author {
+    color: var(--main-text-color);
+    font-weight: bold;
+}
+
+.site-footer .classes a {
+    display: block;
+    padding: 0.15rem 0;
+    margin: 0.35rem 0;
+}
+
+.site-footer .classes a:hover {
     color: var(--main-text-color);
 }
 
-.site-footer .site-credentials .author {
+.site-footer .contacts .label {
+    color: var(--main-text-color);
+}
 
+.site-footer .site-credentials {
+    text-align: center;
+    text-shadow: 0 0 3px var(--main-text-color);
 }
 
 @media screen and (min-width: 500px) {
     .footer-content {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
+        grid-gap: var(--main-grid-gap);
+    }
+
+    .site-footer .classes a {
+        display: inline-block;
     }
 }

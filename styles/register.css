@@ -1,0 +1,45 @@
+.site-content.register .register-container {
+
+ }
+
+.site-content.register .register-bg {
+    background: linear-gradient(rgba(30, 30, 30, 0.3), rgba(30, 30, 30, 0.2)), url("../img/bg-7.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 100%;
+}
+
+.site-content.register .register-form .form-label {
+    position: relative;
+    margin: 0.75rem 0;
+}
+
+.site-content.register .register-form .form-label i {
+    position: absolute;
+    top: 0.65rem;
+    left: 1rem;
+    color: var(--main-text-gray);
+    transition: var(--main-transition-slow);
+}
+
+.site-content.register .register-form .form-label input:hover + i,
+.site-content.register .register-form .form-label input:focus + i {
+    color: var(--main-text-color);
+}
+
+.site-content.register .register-form .form-label input:not([type='submit']) {
+    padding-left: 2.5rem;
+}
+
+@media screen and (min-width: 768px) {
+    .site-content.register .register-container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        border: 1px solid var(--main-text-gray);
+    }
+
+    .site-content.register .register-form {
+        padding: 2rem;
+    }
+}
