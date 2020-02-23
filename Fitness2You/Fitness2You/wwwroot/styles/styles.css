@@ -1,0 +1,38 @@
+@import url("https://use.fontawesome.com/releases/v5.12.0/css/all.css");
+@import "reset.css";
+@import "variables.css";
+@import "typography.css";
+@import "header.css";
+@import "footer.css";
+@import "links.css";
+@import "inputs.css";
+
+@import "home.css";
+@import "register.css";
+@import "login.css";
+@import "subscription.css";
+
+/* Stick the footer always on the bottom of the page. */
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.site-content {
+    flex: 1;
+    margin: 1.75rem 0;
+}
+
+/* Wrapper container. */
+
+.site-wrapper {
+    max-width: 60rem;
+    margin: 0 auto;
+}
+
+.section-title {
+    color: var(--main-text-dark-gray);
+    text-align: center;
+}

@@ -1,0 +1,128 @@
+/* DESCRIPTION TEXTS */
+.description {
+    font-size: 0.9rem;
+    color: var(--main-text-dark-gray);
+}
+
+/* BACKGROUND SECTION */
+.site-content.home .bg-img {
+    background-image: url("../img/bg-3.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding: 14rem 0;
+}
+
+.site-content.home .bg-img-content {
+    max-width: 60rem;
+    margin: 0 auto;
+    color: var(--main-text-white);
+}
+
+/* END OF BACKGROUND SECTION */
+
+/* WHY US SECTION */
+.site-content.home .why-us {
+    margin-top: 3rem;
+}
+
+.site-content.home .why-us-content .link:not(:last-of-type) {
+    margin-right: 1rem;
+}
+
+/* END OF WHY US SECTION */
+
+/* BENEFITS SECTION */
+.benefits-content {
+    display: grid;
+    grid-template-columns: repeat(1, auto);
+    grid-gap: var(--main-grid-gap);
+    margin-top: 3rem;
+}
+
+.benefit .b-header {
+    display: flex;
+    align-items: center;
+}
+
+.benefit .icon {
+    background: var(--main-gradient-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    border-radius: 50px;
+    position: relative;
+    overflow: hidden;
+    margin-right: 1rem;
+}
+
+.benefit .icon:after {
+    display: block;
+    content: '';
+    padding-top: 56.25%;
+}
+
+.benefit .icon img {
+    display: block;
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.5);
+}
+
+/* END OF BENEFITS SECTION */
+
+/* WORKTIME & SUBSCRIBE SECTION */
+.work-sub {
+    margin: 3rem 0;
+}
+
+.work-sub .worktime ul {
+    padding: 0;
+    margin: 0;
+}
+
+.work-sub .worktime ul li {
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem 0;
+    color: var(--main-text-dark-gray);
+}
+
+.work-sub .worktime ul li:not(:last-of-type) {
+    border-bottom: var(--main-border-width) solid var(--main-text-gray);
+}
+
+.work-sub .newsletter .form-label {
+    padding: 0.5rem 0;
+}
+
+/* END OF WORKTIME & SUBSCRIBE SECTION */
+
+@media screen and (min-width: 500px) {
+    .site-content.home .why-us-content {
+        display: flex;
+    }
+
+    .site-content.home .why-us-text {
+        margin-top: 3.5rem;
+    }
+
+    .site-content.home .benefits {
+        grid-template-columns: repeat(2, auto);
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .site-content.home .benefits-content {
+        grid-template-columns: repeat(3, auto);
+    }
+
+    .work-sub {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: var(--main-grid-gap);
+    }
+}

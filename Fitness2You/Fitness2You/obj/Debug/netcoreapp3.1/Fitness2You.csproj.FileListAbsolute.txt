@@ -36,7 +36,6 @@ C:\Users\Enes\source\repos\Fitness2You\Fitness2You\bin\Debug\netcoreapp3.1\runti
 C:\Users\Enes\source\repos\Fitness2You\Fitness2You\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.0\System.Runtime.Caching.dll
 C:\Users\Enes\source\repos\Fitness2You\Fitness2You\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Runtime.Caching.dll
 C:\Users\Enes\source\repos\Fitness2You\Fitness2You\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
-C:\Users\Enes\source\repos\Fitness2You\Fitness2You\obj\Debug\netcoreapp3.1\Fitness2You.csprojAssemblyReference.cache
 C:\Users\Enes\source\repos\Fitness2You\Fitness2You\obj\Debug\netcoreapp3.1\staticwebassets\Fitness2You.StaticWebAssets.Manifest.cache
 C:\Users\Enes\source\repos\Fitness2You\Fitness2You\obj\Debug\netcoreapp3.1\staticwebassets\Fitness2You.StaticWebAssets.xml
 C:\Users\Enes\source\repos\Fitness2You\Fitness2You\obj\Debug\netcoreapp3.1\Fitness2You.MvcApplicationPartsAssemblyInfo.cs

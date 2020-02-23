@@ -1,0 +1,116 @@
+.site-header {
+    background: var(--main-background-color);
+}
+
+.site-header * {
+    color: var(--main-text-color);
+}
+
+.site-header .logo {
+    display: inline-block;
+    border: var(--main-border-width) solid var(--main-text-color);
+    padding: 0.5rem 1rem;
+    border-radius: var(--main-border-radius);
+    margin: 1rem;
+}
+
+.site-header .site-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.site-nav ul {
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+.site-nav ul li {
+    list-style: none;
+}
+
+.site-nav ul li a {
+    padding: 0.5rem 1rem;
+}
+
+
+#main-nav-toggle {
+    display: none;
+}
+
+#toggle {
+    position: relative;
+    flex: 0 0 auto;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    padding: 0.35rem;
+    margin-right: 1.5rem;
+    color: var(--main-text-white);
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+#times-icon {
+    display: none;
+}
+
+@media screen and (max-width: 601px) {
+    .site-nav {
+        display: none;
+    }
+
+    .site-nav ul li a {
+        text-align: center;
+        width: 100%;
+        display: block;
+    }
+
+    .site-nav ul li a:focus,
+    .site-nav ul li a:hover {
+        color: var(--main-text-color);
+        background: var(--main-text-white);
+    }
+
+    .site-nav ul {
+        display: block;
+        padding: 0;
+    }
+
+    .site-nav ul li {
+        padding: 0 0;
+    }
+
+    #main-nav-toggle:checked + .site-wrapper .site-nav {
+        display: block;
+        flex: 1 0 100%;
+    }
+
+    #main-nav-toggle:checked + .site-wrapper .site-branding {
+        display: block;
+    }
+
+    #main-nav-toggle:checked + .site-wrapper #toggle .fa-times {
+        display: block;
+    }
+
+    #main-nav-toggle:checked + .site-wrapper #toggle .fa-bars {
+        display: none;
+    }
+}
+
+@media screen and (min-width: 602px) {
+    .site-header .logo {
+        margin: 1rem 0;
+    }
+
+    .site-nav ul {
+        margin: 0.5rem 0;
+    }
+
+    #toggle {
+        display: none;
+    }
+}
