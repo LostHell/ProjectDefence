@@ -6,6 +6,11 @@
     transition: 0.2s;
 }
 
+.site-content.subscription .subscriptions .sub-description{
+    text-align: center;
+    border: 3px solid;
+}
+
 .site-content.subscription .subscriptions .subscription {
     position: relative;
     overflow: hidden;
