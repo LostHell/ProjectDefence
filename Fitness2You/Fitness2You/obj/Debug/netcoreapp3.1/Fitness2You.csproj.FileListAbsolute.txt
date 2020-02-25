@@ -135,3 +135,4 @@ C:\Users\Enes\source\repos\Fitness2You\Fitness2You\bin\Debug\netcoreapp3.1\zh-Ha
 C:\Users\Enes\source\repos\Fitness2You\Fitness2You\obj\Debug\netcoreapp3.1\Fitness2You.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\Enes\source\repos\Fitness2You\Fitness2You\obj\Debug\netcoreapp3.1\Fitness2You.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\Enes\source\repos\Fitness2You\Fitness2You\obj\Debug\netcoreapp3.1\Razor\Views\Users\Register.cshtml.g.cs
+C:\Users\Enes\source\repos\Fitness2You\Fitness2You\obj\Debug\netcoreapp3.1\Fitness2You.csprojAssemblyReference.cache
