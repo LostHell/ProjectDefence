@@ -32,7 +32,8 @@ namespace Fitness2You.Data.Migrations
                 name: "Benefits",
                 columns: table => new
                 {
-                    Id = table.Column<string>(nullable: false),
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(maxLength: 150, nullable: false),
                     IsActive = table.Column<bool>(nullable: false)
                 },
@@ -45,12 +46,13 @@ namespace Fitness2You.Data.Migrations
                 name: "Classes",
                 columns: table => new
                 {
-                    Id = table.Column<string>(nullable: false),
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(maxLength: 50, nullable: false),
                     Description = table.Column<string>(maxLength: 300, nullable: false),
-                    Price = table.Column<decimal>(type: "decimal(10, 0)", nullable: false),
+                    Price = table.Column<decimal>(nullable: false),
                     Discount = table.Column<int>(nullable: false),
-                    CreatedOn = table.Column<DateTime>(type: "date", nullable: false),
+                    CreatedOn = table.Column<DateTime>(nullable: false),
                     IsActive = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
@@ -67,7 +69,7 @@ namespace Fitness2You.Data.Migrations
                     Email = table.Column<string>(maxLength: 200, nullable: false),
                     Password = table.Column<string>(maxLength: 200, nullable: false),
                     Salt = table.Column<string>(maxLength: 200, nullable: false),
-                    Date = table.Column<DateTime>(type: "date", nullable: false),
+                    Date = table.Column<DateTime>(nullable: false),
                     Role = table.Column<int>(nullable: false),
                     IsDeleted = table.Column<bool>(nullable: false)
                 },
@@ -77,47 +79,49 @@ namespace Fitness2You.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Subscriptions",
+                name: "Subscription",
                 columns: table => new
                 {
-                    Id = table.Column<string>(nullable: false),
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(maxLength: 100, nullable: false),
-                    BenefitsId = table.Column<string>(nullable: true),
-                    Price = table.Column<decimal>(type: "decimal(10, 0)", nullable: false),
+                    BenefitsId = table.Column<int>(nullable: false),
+                    Price = table.Column<decimal>(nullable: false),
                     Discount = table.Column<int>(nullable: false),
-                    CreatedOn = table.Column<DateTime>(type: "date", nullable: false),
+                    CreatedOn = table.Column<DateTime>(nullable: false),
                     IsActive = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Subscriptions", x => x.Id);
+                    table.PrimaryKey("PK_Subscription", x => x.Id);
                     table.ForeignKey(
-                        name: "FK__Subscript__Benef__3B75D760",
+                        name: "FK_Subscription_Benefits_BenefitsId",
                         column: x => x.BenefitsId,
                         principalTable: "Benefits",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
                 name: "UserClasses",
                 columns: table => new
                 {
-                    Id = table.Column<string>(nullable: false),
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     UserId = table.Column<string>(nullable: true),
-                    ClassId = table.Column<string>(nullable: true)
+                    ClassId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_UserClasses", x => x.Id);
                     table.ForeignKey(
-                        name: "FK__UserClass__Class__44FF419A",
+                        name: "FK_UserClasses_Classes_ClassId",
                         column: x => x.ClassId,
                         principalTable: "Classes",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK__UserClass__UserI__440B1D61",
+                        name: "FK_UserClasses_Users_UserId",
                         column: x => x.UserId,
                         principalTable: "Users",
                         principalColumn: "Id",
@@ -128,21 +132,22 @@ namespace Fitness2You.Data.Migrations
                 name: "UserSubscriptions",
                 columns: table => new
                 {
-                    Id = table.Column<string>(nullable: false),
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     UserId = table.Column<string>(nullable: true),
-                    SubscriptionId = table.Column<string>(nullable: true)
+                    SubscriptionId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_UserSubscriptions", x => x.Id);
                     table.ForeignKey(
-                        name: "FK__UserSubsc__Subsc__3F466844",
+                        name: "FK_UserSubscriptions_Subscription_SubscriptionId",
                         column: x => x.SubscriptionId,
-                        principalTable: "Subscriptions",
+                        principalTable: "Subscription",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK__UserSubsc__UserI__3E52440B",
+                        name: "FK_UserSubscriptions_Users_UserId",
                         column: x => x.UserId,
                         principalTable: "Users",
                         principalColumn: "Id",
@@ -150,8 +155,8 @@ namespace Fitness2You.Data.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Subscriptions_BenefitsId",
-                table: "Subscriptions",
+                name: "IX_Subscription_BenefitsId",
+                table: "Subscription",
                 column: "BenefitsId");
 
             migrationBuilder.CreateIndex(
@@ -187,7 +192,7 @@ namespace Fitness2You.Data.Migrations
                 name: "Classes");
 
             migrationBuilder.DropTable(
-                name: "Subscriptions");
+                name: "Subscription");
 
             migrationBuilder.DropTable(
                 name: "Users");

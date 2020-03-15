@@ -1,5 +1,5 @@
 ﻿@{
-    ViewData["Title"] = "Register page";
+    ViewData["Title"] = "Register Page";
 }
 
 <main class="site-content register">
@@ -9,7 +9,7 @@
             <section class="register-bg">
             </section>
             <section class="register-form">
-                <form>
+                <form method="post">
                     <section class="form-label">
                         <input type="text" name="username" placeholder="Username...">
                         <i class="fas fa-user"></i>
@@ -23,11 +23,11 @@
                         <i class="fas fa-lock"></i>
                     </section>
                     <section class="form-label">
-                        <input type="password" name="confirmPassword" placeholder="Repeat password...">
+                        <input type="password" name="repeatPassword" placeholder="Repeat password...">
                         <i class="fas fa-lock"></i>
                     </section>
                     <section class="form-label">
-                        <input type="submit" value="Register" formmethod="post">
+                        <input type="submit" value="Register">
                     </section>
                 </form>
             </section>

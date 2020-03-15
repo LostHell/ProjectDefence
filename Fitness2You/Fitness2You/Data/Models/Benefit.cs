@@ -1,5 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace MODELS_PROJECT.Data
 {
@@ -7,12 +7,16 @@ namespace MODELS_PROJECT.Data
     {
         public Benefit()
         {
-            this.Id = Guid.NewGuid().ToString();
             Subscription = new HashSet<Subscription>();
         }
 
-        public string Id { get; set; }
+        [Key]
+        public int Id { get; set; }
+
+        [Required]
+        [MaxLength(150)]
         public string Name { get; set; }
+
         public bool IsActive { get; set; }
 
         public virtual ICollection<Subscription> Subscription { get; set; }

@@ -8548,11 +8548,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Enes\\source\\repos\\Fitness2You\\Fitness2You\\Fitness2You.csproj",
+      "projectUniqueName": "C:\\Users\\Enes\\Desktop\\ProjectDefence\\Fitness2You\\Fitness2You\\Fitness2You.csproj",
       "projectName": "Fitness2You",
-      "projectPath": "C:\\Users\\Enes\\source\\repos\\Fitness2You\\Fitness2You\\Fitness2You.csproj",
+      "projectPath": "C:\\Users\\Enes\\Desktop\\ProjectDefence\\Fitness2You\\Fitness2You\\Fitness2You.csproj",
       "packagesPath": "C:\\Users\\Enes\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Enes\\source\\repos\\Fitness2You\\Fitness2You\\obj\\",
+      "outputPath": "C:\\Users\\Enes\\Desktop\\ProjectDefence\\Fitness2You\\Fitness2You\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

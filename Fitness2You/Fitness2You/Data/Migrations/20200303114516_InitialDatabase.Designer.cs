@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Fitness2You.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20200223162653_InitialDatabase")]
+    [Migration("20200303114516_InitialDatabase")]
     partial class InitialDatabase
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -23,8 +23,10 @@ namespace Fitness2You.Data.Migrations
 
             modelBuilder.Entity("MODELS_PROJECT.Data.Benefit", b =>
                 {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
@@ -41,11 +43,13 @@ namespace Fitness2You.Data.Migrations
 
             modelBuilder.Entity("MODELS_PROJECT.Data.Class", b =>
                 {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("date");
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Description")
                         .IsRequired()
@@ -64,7 +68,7 @@ namespace Fitness2You.Data.Migrations
                         .HasMaxLength(50);
 
                     b.Property<decimal>("Price")
-                        .HasColumnType("decimal(10, 0)");
+                        .HasColumnType("decimal(18,2)");
 
                     b.HasKey("Id");
 
@@ -73,14 +77,16 @@ namespace Fitness2You.Data.Migrations
 
             modelBuilder.Entity("MODELS_PROJECT.Data.Subscription", b =>
                 {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("BenefitsId")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("BenefitsId")
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("date");
+                        .HasColumnType("datetime2");
 
                     b.Property<int>("Discount")
                         .HasColumnType("int");
@@ -94,13 +100,13 @@ namespace Fitness2You.Data.Migrations
                         .HasMaxLength(100);
 
                     b.Property<decimal>("Price")
-                        .HasColumnType("decimal(10, 0)");
+                        .HasColumnType("decimal(18,2)");
 
                     b.HasKey("Id");
 
                     b.HasIndex("BenefitsId");
 
-                    b.ToTable("Subscriptions");
+                    b.ToTable("Subscription");
                 });
 
             modelBuilder.Entity("MODELS_PROJECT.Data.User", b =>
@@ -109,7 +115,7 @@ namespace Fitness2You.Data.Migrations
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<DateTime>("Date")
-                        .HasColumnType("date");
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Email")
                         .IsRequired()
@@ -144,11 +150,13 @@ namespace Fitness2You.Data.Migrations
 
             modelBuilder.Entity("MODELS_PROJECT.Data.UserClass", b =>
                 {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("ClassId")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("ClassId")
+                        .HasColumnType("int");
 
                     b.Property<string>("UserId")
                         .HasColumnType("nvarchar(450)");
@@ -164,11 +172,13 @@ namespace Fitness2You.Data.Migrations
 
             modelBuilder.Entity("MODELS_PROJECT.Data.UserSubscription", b =>
                 {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("SubscriptionId")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("SubscriptionId")
+                        .HasColumnType("int");
 
                     b.Property<string>("UserId")
                         .HasColumnType("nvarchar(450)");
@@ -187,7 +197,8 @@ namespace Fitness2You.Data.Migrations
                     b.HasOne("MODELS_PROJECT.Data.Benefit", "Benefits")
                         .WithMany("Subscription")
                         .HasForeignKey("BenefitsId")
-                        .HasConstraintName("FK__Subscript__Benef__3B75D760");
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("MODELS_PROJECT.Data.UserClass", b =>
@@ -195,12 +206,13 @@ namespace Fitness2You.Data.Migrations
                     b.HasOne("MODELS_PROJECT.Data.Class", "Class")
                         .WithMany("UserClasses")
                         .HasForeignKey("ClassId")
-                        .HasConstraintName("FK__UserClass__Class__44FF419A");
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
 
                     b.HasOne("MODELS_PROJECT.Data.User", "User")
                         .WithMany("UserClasses")
                         .HasForeignKey("UserId")
-                        .HasConstraintName("FK__UserClass__UserI__440B1D61");
+                        .OnDelete(DeleteBehavior.Restrict);
                 });
 
             modelBuilder.Entity("MODELS_PROJECT.Data.UserSubscription", b =>
@@ -208,12 +220,13 @@ namespace Fitness2You.Data.Migrations
                     b.HasOne("MODELS_PROJECT.Data.Subscription", "Subscription")
                         .WithMany("UserSubscriptions")
                         .HasForeignKey("SubscriptionId")
-                        .HasConstraintName("FK__UserSubsc__Subsc__3F466844");
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
 
                     b.HasOne("MODELS_PROJECT.Data.User", "User")
                         .WithMany("UserSubscriptions")
                         .HasForeignKey("UserId")
-                        .HasConstraintName("FK__UserSubsc__UserI__3E52440B");
+                        .OnDelete(DeleteBehavior.Restrict);
                 });
 #pragma warning restore 612, 618
         }

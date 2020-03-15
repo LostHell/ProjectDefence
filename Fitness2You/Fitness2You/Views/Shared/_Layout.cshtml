@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Fitness 2 You</title>
+    <title>@ViewData["Title"] - Fitness 2 You</title>
     <link rel="stylesheet" href="/styles/styles.css">
 </head>
 <body>
@@ -11,7 +11,7 @@
         <input type="checkbox" name="main-nav-toggle" id="main-nav-toggle">
         <section class="site-wrapper">
             <section class="site-logo">
-                <a href="/Home/Index" class="logo">Fitness2You</a>
+                <a href="/" class="logo">Fitness2You</a>
             </section>
 
             <label for="main-nav-toggle" id="toggle">
@@ -21,24 +21,18 @@
 
             <nav class="site-nav">
                 <ul>
-                    @if (User == null)
-                    {
-                        <li>
-                            <a href="./subscription.html">Subscription</a>
-                        </li>
-                        <li>
-                            <a href="#">Our Trainers</a>
-                        </li>
-                    }
-                    else
-                    {
-                        <li>
-                            <a href="/Users/Register">Sign up</a>
-                        </li>
-                        <li>
-                            <a href="/Users/Login">Log in</a>
-                        </li>
-                    }
+                    <li>
+                        <a href="/Subscriptions/Subscription">Subscription</a>
+                    </li>
+                    <li>
+                        <a href="#">Our Trainers</a>
+                    </li>
+                    <li>
+                        <a href="/Users/Register">Sign up</a>
+                    </li>
+                    <li>
+                        <a href="/Users/Login">Log in</a>
+                    </li>
                 </ul>
             </nav>
         </section>
@@ -51,7 +45,7 @@
             <section class="footer-content">
                 <article>
                     <section class="site-logo">
-                        <a href="/Home/Index" class="logo">Fitness2You</a>
+                        <a href="/" class="logo">Fitness2You</a>
                     </section>
                     <p class="site-slogan">Proin nunc sapien, gravida ut sapien ut, ultrices faucibus sapien. Proin vehicula varius ex, vel feugiat massa scelerisque id. Nullam vulputate a lectus non molestie. Duis at lobortis neque.</p>
                     <section class="site-social">
@@ -106,6 +100,5 @@
             </section>
         </section>
     </footer>
-    @RenderSection("Scripts", required: false)
 </body>
 </html>

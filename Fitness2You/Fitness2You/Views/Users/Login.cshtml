@@ -1,13 +1,12 @@
 ﻿@{
     ViewData["Title"] = "Login Page";
 }
-
 <main class="site-content login">
     <section class="site-wrapper">
         <h2 class="section-title">Login to your account</h2>
         <article class="login-container">
             <section class="login-form">
-                <form>
+                <form method="post">
                     <section class="form-label">
                         <input type="text" name="username" placeholder="Username...">
                         <i class="fas fa-user"></i>
@@ -17,7 +16,7 @@
                         <i class="fas fa-lock"></i>
                     </section>
                     <section class="form-label">
-                        <input type="submit" value="Login" formmethod="post">
+                        <input type="submit" value="Login">
                     </section>
                 </form>
             </section>

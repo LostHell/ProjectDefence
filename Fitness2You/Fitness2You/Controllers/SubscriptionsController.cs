@@ -6,14 +6,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Fitness2You.Controllers
 {
-    public class UsersController : Controller
+    public class SubscriptionsController : Controller
     {
-        public IActionResult Login()
-        {
-            return View();
-        }
-
-        public IActionResult Register()
+        public IActionResult Subscription()
         {
             return View();
         }
