@@ -1,0 +1,112 @@
+﻿@using Fitness2You.Common
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Fitness 2 You</title>
+    <link rel="stylesheet" href="~/styles/styles.css">
+</head>
+<body>
+    <header class="site-header">
+        <input type="checkbox" name="main-nav-toggle" id="main-nav-toggle">
+        <section class="site-wrapper">
+            <section class="site-logo">
+                <a href="/" class="logo">Fitness2You</a>
+            </section>
+
+            <label for="main-nav-toggle" id="toggle">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-times" id="times-icon"></i>
+            </label>
+
+            <nav class="site-nav">
+                <ul>
+                    <partial name="_LoginPartial" />
+                </ul>
+            </nav>
+        </section>
+    </header>
+
+    <partial name="_CookieConsentPartial" />
+    @this.RenderBody()
+
+<footer class="site-footer">
+    <section class="site-wrapper">
+        <section class="footer-content">
+            <article>
+                <section class="site-logo">
+                    <a href="/" class="logo">Fitness2You</a>
+                </section>
+                <p class="site-slogan">Proin nunc sapien, gravida ut sapien ut, ultrices faucibus sapien. Proin vehicula varius ex, vel feugiat massa scelerisque id. Nullam vulputate a lectus non molestie. Duis at lobortis neque.</p>
+                <section class="site-social">
+                    <a href="#"><i class="fab fa-pinterest-p"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="#"><i class="fab fa-google-plus-g"></i></a>
+                </section>
+            </article>
+            <article class="testimonials">
+                <h6>Testimonials</h6>
+                <section class="testimonial">
+                    <p class="quote">“ Donec molestie tincidunt tellus sit amet aliquet. Proin auctor nisi ut purus.</p>
+                    <p class="quote-author">Michael Smith</p>
+                </section>
+                <section class="testimonial">
+                    <p class="quote">“ Molestie tincidunt tellus sit amet aliquet. Proin auctor nisi ut purus.</p>
+                    <p class="quote-author">Paco Refana</p>
+                </section>
+            </article>
+            <article class="classes">
+                <h6>Classes</h6>
+                <section>
+                    <a href="#">Bodybuilding Class</a>
+                    <a href="#">Fitness Class</a>
+                    <a href="#">Yoga Courses</a>
+                    <a href="#">Dumbell Class</a>
+                    <a href="#">Spinning Class</a>
+                    <a href="#">Kangoo Jump Class</a>
+                </section>
+            </article>
+            <article class="contacts">
+                <h6>Contacts</h6>
+                <section>
+                    <p class="label">Address</p>
+                    <p class="value">Berlin Osdorfer Str. 100</p>
+                </section>
+                <section>
+                    <p class="label">Phone</p>
+                    <p class="value">+49 123 456 789</p>
+                </section>
+                <section>
+                    <p class="label">Email</p>
+                    <p class="value">karadzhov@localhost.com</p>
+                </section>
+            </article>
+        </section>
+        <section class="site-credentials">
+            &copy; Coded & Designed with <i class="far fa-heart"></i> by <span class="author">E.Karadzhov</span>
+        </section>
+    </section>
+</footer>
+
+    <environment names="Development">
+        <script src="~/lib/jquery/dist/jquery.js" asp-append-version="true"></script>
+        <script src="~/lib/jquery-validation/dist/jquery.validate.js" asp-append-version="true"></script>
+        <script src="~/lib/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.js" asp-append-version="true"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.js" asp-append-version="true"></script>
+        <script src="~/js/site.js" asp-append-version="true"></script>
+    </environment>
+    <environment names="Staging,Production">
+        <script src="~/lib/jquery/dist/jquery.min.js" asp-append-version="true"></script>
+        <script src="~/lib/jquery-validation/dist/jquery.validate.min.js" asp-append-version="true"></script>
+        <script src="~/lib/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.js" asp-append-version="true"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.min.js" asp-append-version="true"></script>
+        <script src="~/js/site.min.js" asp-append-version="true"></script>
+    </environment>
+
+    @this.RenderSection("Scripts", required: false)
+</body>
+</html>

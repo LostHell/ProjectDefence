@@ -1,0 +1,43 @@
+﻿@model RegisterModel
+
+@{
+    ViewData["Title"] = "Register page";
+}
+
+<main class="site-content register">
+    <section class="site-wrapper">
+        <h2 class="section-title">Register your account</h2>
+        <article class="register-container">
+            <section class="register-bg">
+            </section>
+            <section class="register-form">
+                <form method="post">
+                    <div asp-validation-summary="All" class="text-danger"></div>
+                    <section class="form-label">
+                        <input type="text" asp-for="Input.Username" placeholder="Username...">
+                        <i class="fas fa-user"></i>
+                        <span asp-validation-for="Input.Username" class="text-danger"></span>
+                    </section>
+                    <section class="form-label">
+                        <input type="email" asp-for="Input.Email" placeholder="Email...">
+                        <i class="fas fa-envelope"></i>
+                        <span asp-validation-for="Input.Email" class="text-danger"></span>
+                    </section>
+                    <section class="form-label">
+                        <input type="password" asp-for="Input.Password" placeholder="Password...">
+                        <i class="fas fa-lock"></i>
+                        <span asp-validation-for="Input.Password" class="text-danger"></span>
+                    </section>
+                    <section class="form-label">
+                        <input type="password" asp-for="Input.RepeatPassword" placeholder="Repeat password...">
+                        <i class="fas fa-lock"></i>
+                        <span asp-validation-for="Input.RepeatPassword" class="text-danger"></span>
+                    </section>
+                    <section class="form-label">
+                        <input type="submit" value="Register">
+                    </section>
+                </form>
+            </section>
+        </article>
+    </section>
+</main>
