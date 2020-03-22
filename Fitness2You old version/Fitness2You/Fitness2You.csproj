@@ -1,0 +1,35 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UserSecretsId>aspnet-Fitness2You-349D8F9D-620E-46FA-A03F-2B2AE1C90649</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Data\Migrations\20200303113316_UploadDatabase.cs" />
+    <Compile Remove="Data\Migrations\20200303113316_UploadDatabase.Designer.cs" />
+    <Compile Remove="Data\Migrations\20200303113532_InitialDatabase.cs" />
+    <Compile Remove="Data\Migrations\20200303113532_InitialDatabase.Designer.cs" />
+    <Compile Remove="Data\Migrations\20200303113940_InitialDatabase.cs" />
+    <Compile Remove="Data\Migrations\20200303113940_InitialDatabase.Designer.cs" />
+    <Compile Remove="Data\Migrations\20200303114354_InitialDatabase.cs" />
+    <Compile Remove="Data\Migrations\20200303114354_InitialDatabase.Designer.cs" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <PackageReference Include="Cloudinary.Core" Version="1.31.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="3.1.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="3.1.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.0" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.1" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <None Include="wwwroot\img\fitness.webp" />
+  </ItemGroup>
+
+</Project>
