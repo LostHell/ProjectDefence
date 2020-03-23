@@ -166,3 +166,5 @@ C:\Users\Enes\Desktop\ProjectDefence\Fitness2You\Fitness2You\obj\Debug\netcoreap
 C:\Users\Enes\Desktop\ProjectDefence\Fitness2You\Fitness2You\obj\Debug\netcoreapp3.1\Fitness2You.dll
 C:\Users\Enes\Desktop\ProjectDefence\Fitness2You\Fitness2You\obj\Debug\netcoreapp3.1\Fitness2You.pdb
 C:\Users\Enes\Desktop\ProjectDefence\Fitness2You\Fitness2You\obj\Debug\netcoreapp3.1\Fitness2You.genruntimeconfig.cache
+C:\Users\Enes\Desktop\ProjectDefence\Fitness2You\Fitness2You\obj\Debug\netcoreapp3.1\Razor\Views\Users\Login.cshtml.g.cs
+C:\Users\Enes\Desktop\ProjectDefence\Fitness2You\Fitness2You\obj\Debug\netcoreapp3.1\Razor\Views\Users\Register.cshtml.g.cs
