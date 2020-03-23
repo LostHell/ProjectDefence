@@ -149,7 +149,6 @@ C:\Users\Enes\Desktop\ProjectDefence\Fitness2You\Fitness2You\obj\Debug\netcoreap
 C:\Users\Enes\Desktop\ProjectDefence\Fitness2You\Fitness2You\obj\Debug\netcoreapp3.1\Fitness2You.RazorCoreGenerate.cache
 C:\Users\Enes\Desktop\ProjectDefence\Fitness2You\Fitness2You\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\_ViewStart.cshtml.g.cs
 C:\Users\Enes\Desktop\ProjectDefence\Fitness2You\Fitness2You\obj\Debug\netcoreapp3.1\Razor\Views\Home\Index.cshtml.g.cs
-C:\Users\Enes\Desktop\ProjectDefence\Fitness2You\Fitness2You\obj\Debug\netcoreapp3.1\Razor\Views\Home\Privacy.cshtml.g.cs
 C:\Users\Enes\Desktop\ProjectDefence\Fitness2You\Fitness2You\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Error.cshtml.g.cs
 C:\Users\Enes\Desktop\ProjectDefence\Fitness2You\Fitness2You\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_Layout.cshtml.g.cs
 C:\Users\Enes\Desktop\ProjectDefence\Fitness2You\Fitness2You\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_LoginPartial.cshtml.g.cs
@@ -168,3 +167,5 @@ C:\Users\Enes\Desktop\ProjectDefence\Fitness2You\Fitness2You\obj\Debug\netcoreap
 C:\Users\Enes\Desktop\ProjectDefence\Fitness2You\Fitness2You\obj\Debug\netcoreapp3.1\Razor\Views\Users\Login.cshtml.g.cs
 C:\Users\Enes\Desktop\ProjectDefence\Fitness2You\Fitness2You\obj\Debug\netcoreapp3.1\Razor\Views\Users\Register.cshtml.g.cs
 C:\Users\Enes\Desktop\ProjectDefence\Fitness2You\Fitness2You\obj\Debug\netcoreapp3.1\Razor\Views\Subscriptions\Index.cshtml.g.cs
+C:\Users\Enes\Desktop\ProjectDefence\Fitness2You\Fitness2You\obj\Debug\netcoreapp3.1\Razor\Views\Users\ChangePassword.cshtml.g.cs
+C:\Users\Enes\Desktop\ProjectDefence\Fitness2You\Fitness2You\obj\Debug\netcoreapp3.1\Fitness2You.csprojAssemblyReference.cache

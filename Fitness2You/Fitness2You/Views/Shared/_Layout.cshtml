@@ -1,4 +1,8 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -21,18 +25,30 @@
 
             <nav class="site-nav">
                 <ul>
-                    <li>
-                        <a href="/Subscriptions/Index">Subscription</a>
-                    </li>
-                    <li>
-                        <a href="#">Our Trainers</a>
-                    </li>
-                    <li>
-                        <a href="/Users/Register">Sign up</a>
-                    </li>
-                    <li>
-                        <a href="/Users/Login">Log in</a>
-                    </li>
+                    @if (SignInManager.IsSignedIn(User))
+                    {
+                        <li>
+                            <a href="/Subscriptions/Index">Subscription</a>
+                        </li>
+                        <li>
+                            <a href="#">Our Trainers</a>
+                        </li>
+                        <li>
+                            <a href="/Users/ChangePassword">Change Password</a>
+                        </li>
+                        <li>
+                            <a href="/Users/Logout">Logout</a>
+                        </li>
+                    }
+                    else
+                    {
+                        <li>
+                            <a href="/Users/Register">Sign up</a>
+                        </li>
+                        <li>
+                            <a href="/Users/Login">Log in</a>
+                        </li>
+                    }
                 </ul>
             </nav>
         </section>
