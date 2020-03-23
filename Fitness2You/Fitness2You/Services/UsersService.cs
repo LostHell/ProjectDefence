@@ -20,6 +20,19 @@ namespace Fitness2You.Services
             this.signInManager = signInManager;
         }
 
+        public async Task ChangePassword(string username, string oldPassword, string newPassword)
+        {
+            IdentityUser user = db.Users.FirstOrDefault(x => x.UserName == username);
+            var result = await userManager.ChangePasswordAsync(user, oldPassword, newPassword);
+
+            if (result.Succeeded)
+            {
+                
+            }
+
+            await signInManager.RefreshSignInAsync(user);
+        }
+
         public bool EmailExists(string email)
         {
             return this.db.Users.Any(x => x.Email == email);
@@ -28,6 +41,11 @@ namespace Fitness2You.Services
         public async Task Login(string username, string password)
         {
             var result = await signInManager.PasswordSignInAsync(username, password, false, false);
+
+            if (result.Succeeded)
+            {
+
+            }
         }
 
         public async Task Logout()

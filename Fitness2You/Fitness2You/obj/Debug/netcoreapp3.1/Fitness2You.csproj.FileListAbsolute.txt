@@ -137,9 +137,6 @@ C:\Users\Enes\Desktop\ProjectDefence\Fitness2You\Fitness2You\bin\Debug\netcoreap
 C:\Users\Enes\Desktop\ProjectDefence\Fitness2You\Fitness2You\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.0\System.Runtime.Caching.dll
 C:\Users\Enes\Desktop\ProjectDefence\Fitness2You\Fitness2You\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Runtime.Caching.dll
 C:\Users\Enes\Desktop\ProjectDefence\Fitness2You\Fitness2You\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
-C:\Users\Enes\Desktop\ProjectDefence\Fitness2You\Fitness2You\obj\Debug\netcoreapp3.1\Fitness2You.csproj.CoreCompileInputs.cache
-C:\Users\Enes\Desktop\ProjectDefence\Fitness2You\Fitness2You\obj\Debug\netcoreapp3.1\Fitness2You.MvcApplicationPartsAssemblyInfo.cs
-C:\Users\Enes\Desktop\ProjectDefence\Fitness2You\Fitness2You\obj\Debug\netcoreapp3.1\Fitness2You.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\Enes\Desktop\ProjectDefence\Fitness2You\Fitness2You\obj\Debug\netcoreapp3.1\Fitness2You.RazorAssemblyInfo.cache
 C:\Users\Enes\Desktop\ProjectDefence\Fitness2You\Fitness2You\obj\Debug\netcoreapp3.1\Fitness2You.RazorAssemblyInfo.cs
 C:\Users\Enes\Desktop\ProjectDefence\Fitness2You\Fitness2You\obj\Debug\netcoreapp3.1\Fitness2You.AssemblyInfoInputs.cache
@@ -168,4 +165,6 @@ C:\Users\Enes\Desktop\ProjectDefence\Fitness2You\Fitness2You\obj\Debug\netcoreap
 C:\Users\Enes\Desktop\ProjectDefence\Fitness2You\Fitness2You\obj\Debug\netcoreapp3.1\Razor\Views\Users\Register.cshtml.g.cs
 C:\Users\Enes\Desktop\ProjectDefence\Fitness2You\Fitness2You\obj\Debug\netcoreapp3.1\Razor\Views\Subscriptions\Index.cshtml.g.cs
 C:\Users\Enes\Desktop\ProjectDefence\Fitness2You\Fitness2You\obj\Debug\netcoreapp3.1\Razor\Views\Users\ChangePassword.cshtml.g.cs
-C:\Users\Enes\Desktop\ProjectDefence\Fitness2You\Fitness2You\obj\Debug\netcoreapp3.1\Fitness2You.csprojAssemblyReference.cache
+C:\Users\Enes\Desktop\ProjectDefence\Fitness2You\Fitness2You\obj\Debug\netcoreapp3.1\Fitness2You.csproj.CoreCompileInputs.cache
+C:\Users\Enes\Desktop\ProjectDefence\Fitness2You\Fitness2You\obj\Debug\netcoreapp3.1\Fitness2You.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\Enes\Desktop\ProjectDefence\Fitness2You\Fitness2You\obj\Debug\netcoreapp3.1\Fitness2You.MvcApplicationPartsAssemblyInfo.cache

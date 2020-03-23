@@ -60,6 +60,19 @@ namespace Fitness2You.Controllers
             return View();
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> ChangePassword(ChangePasswordInputViewModel password)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
+
+            await usersService.ChangePassword(User.Identity.Name, password.OldPassword, password.NewPassword);
+            return Redirect("/Home/Index");
+        }
+
         public async Task<IActionResult> Logout(string returnUrl = null)
         {
             await usersService.Logout();

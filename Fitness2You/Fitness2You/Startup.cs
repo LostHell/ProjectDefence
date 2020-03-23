@@ -1,4 +1,5 @@
 using Fitness2You.Data;
+using Fitness2You.SeedData;
 using Fitness2You.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -36,6 +37,7 @@ namespace Fitness2You
                 options.Password.RequireLowercase = false;
                 options.Password.RequireNonAlphanumeric = false;
             })
+                .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
 
             services.AddControllersWithViews();
@@ -46,6 +48,24 @@ namespace Fitness2You
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            //My Settings for SeedData and AutoMigrate database
+            using (var scoped = app.ApplicationServices.CreateScope())
+            {
+                var dbContext = scoped.ServiceProvider.GetService<ApplicationDbContext>();
+
+                if (env.IsDevelopment())
+                {
+                    dbContext.Database.Migrate();
+                }
+
+                new ApplicationDbContextSeeder(scoped.ServiceProvider, dbContext)
+                    .SeedDataAsync()
+                    .GetAwaiter()
+                    .GetResult();
+            }
+
+            //FINISH WITH My Settings for SeedData and AutoMigrate database
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();

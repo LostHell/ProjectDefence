@@ -8,6 +8,8 @@ namespace Fitness2You.Services
 
         bool EmailExists(string email);
 
+        Task ChangePassword(string username, string oldPassword, string newPassword);
+
         Task Register(string username, string email, string password);
 
         Task Login(string username, string password);
