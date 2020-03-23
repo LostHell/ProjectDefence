@@ -1,8 +1,139 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Index Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<main class="site-content home">
+    <section class="bg-img">
+        <article class="bg-img-content">
+            <h1>Get fit & healthy.</h1>
+            <p>On the beautiful island of Fuerteventura. Retreat Yourself.</p>
+            <a href="#" class="link light">Read more</a>
+        </article>
+    </section>
+    <section class="site-wrapper">
+        <section class="why-us">
+            <h2>Why choose Fitness Gym?</h2>
+            <article class="why-us-content">
+                <section class="why-us-text">
+                    <p class="description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias esse nam nihil quasi similique, sint ullam unde voluptatum! Assumenda exercitationem ratione repudiandae similique tempore. Commodi est illo officia provident rem. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias esse nam nihil quasi similique, sint ullam unde voluptatum! Assumenda exercitationem ratione repudiandae similique tempore. Commodi est illo officia provident rem.</p>
+                    <a href="#" class="link light">Get a membership</a>
+                    <a href="#" class="link dark">Find out more</a>
+                </section>
+                <section class="why-us-img">
+                    <img src="~/img/man.png" alt="Image Not Found">
+                </section>
+            </article>
+        </section>
+        <section class="benefits">
+            <h2>Your benefits</h2>
+            <section class="benefits-content">
+                <article class="benefit">
+                    <section class="b-header">
+                        <div class="icon">
+                            <img src="~/img/icons/apple.png" alt="Icon not found!">
+                        </div>
+                        <h6 class="title">Diet specialists</h6>
+                    </section>
+                    <p class="description">Donec id mattis est. Proin nunc sapien, gravida ut sapien ut, ultrices faucibus sapien. Proin vehicula varius ex, vel feugiat massa.</p>
+                </article>
+                <article class="benefit">
+                    <section class="b-header">
+                        <div class="icon">
+                            <img src="~/img/icons/dumbbell.png" alt="Icon not found!">
+                        </div>
+                        <h6 class="title">Business School</h6>
+                    </section>
+                    <p class="description">Proin nunc sapien, gravida ut sapien ut, ultrices faucibus sapien. Proin vehicula varius ex, vel feugiat massa scelerisque id.</p>
+                </article>
+                <article class="benefit">
+                    <section class="b-header">
+                        <div class="icon">
+                            <img src="~/img/icons/lotus-position.png" alt="Icon not found!">
+                        </div>
+                        <h6 class="title">Yoga courses</h6>
+                    </section>
+                    <p class="description">Nullam vulputate a lectus non molestie. Duis at lobortis neque, in maximus leo. Donec nec blandit ex, in finibus tortor.</p>
+                </article>
+                <article class="benefit">
+                    <section class="b-header">
+                        <div class="icon">
+                            <img src="~/img/icons/slim-down.png" alt="Icon not found!">
+                        </div>
+                        <h6 class="title">Fitness PRO</h6>
+                    </section>
+                    <p class="description">Proin nunc sapien, gravida ut sapien ut, ultrices faucibus sapien. Proin vehicula varius ex, vel feugiat massa scelerisque id.</p>
+                </article>
+                <article class="benefit">
+                    <section class="b-header">
+                        <div class="icon">
+                            <img src="~/img/icons/stationary-bike.png" alt="Icon not found!">
+                        </div>
+                        <h6 class="title">Spinning class</h6>
+                    </section>
+                    <p class="description">Nullam vulputate a lectus non molestie. Duis at lobortis neque, in maximus leo. Donec nec blandit ex, in finibus tortor.</p>
+                </article>
+                <article class="benefit">
+                    <section class="b-header">
+                        <div class="icon">
+                            <img src="~/img/icons/swimming.png" alt="Icon not found!">
+                        </div>
+                        <h6 class="title">Swimming pool</h6>
+                    </section>
+                    <p class="description">Proin nunc sapien, gravida ut sapien ut, ultrices faucibus sapien. Proin vehicula varius ex, vel feugiat massa scelerisque id.</p>
+                </article>
+            </section>
+        </section>
+        <section class="work-sub">
+            <article class="worktime">
+                <h2>Working hours</h2>
+                <ul>
+                    <li>
+                        <span>Monday</span>
+                        <span>08:00 - 22:00</span>
+                    </li>
+                    <li>
+                        <span>Tuesday</span>
+                        <span>10:00 - 22:00</span>
+                    </li>
+                    <li>
+                        <span>Wednesday</span>
+                        <span>10:00 - 20:00</span>
+                    </li>
+                    <li>
+                        <span>Thursday</span>
+                        <span>12:00 - 20:00</span>
+                    </li>
+                    <li>
+                        <span>Friday</span>
+                        <span>12:00 - 18:00</span>
+                    </li>
+                    <li>
+                        <span>Saturday</span>
+                        <span>10:00 - 18:00</span>
+                    </li>
+                    <li>
+                        <span>Sunday</span>
+                        <span>CLOSED</span>
+                    </li>
+                </ul>
+            </article>
+            <article class="newsletter">
+                <h2>Our Newsletter</h2>
+                <form>
+                    <section class="form-label">
+                        <input type="text" name="name" placeholder="Your name.." />
+                    </section>
+                    <section class="form-label">
+                        <input type="email" name="email" placeholder="Your email.." />
+                    </section>
+                    <section class="form-label">
+                        <span class="description">*Donec id mattis est. Proin nunc sapien, gravida ut sapien ut, ultrices faucibus sapien. Proin vehicula varius ex, vel feugiat massa scelerisque id.</span>
+                    </section>
+                    <section class="form-label">
+                        <input type="submit" value="Subscribe" />
+                    </section>
+                </form>
+            </article>
+        </section>
+    </section>
+</main>

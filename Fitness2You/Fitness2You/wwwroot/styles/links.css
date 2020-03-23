@@ -1,0 +1,39 @@
+/* BASIC LINK. */
+.link {
+    padding: 0.30rem 0.8rem;
+    min-width: 10rem;
+    display: inline-block;
+    text-align: center;
+    font-weight: bold;
+    transition: var(--main-transition-slow);
+    border-radius: var(--main-border-radius);
+}
+/* END OF BASIC LINK. */
+
+/* Link light. */
+.link.light {
+    color: var(--main-text-color);
+    border: 3px solid var(--main-text-color);
+}
+
+.link.light:hover,
+.link.light:focus {
+    background: var(--main-text-color);
+    color: var(--main-text-white);
+}
+/* END OF Link light. */
+
+/* Link dark. */
+.link.dark {
+    color: var(--main-text-white);
+    border: 3px solid var(--main-text-color);
+    background: var(--main-text-color);
+}
+
+.link.dark:hover,
+.link.dark:focus {
+    color: var(--main-text-white);
+    border: 3px solid var(--main-text-black);
+    background: var(--main-text-black);
+}
+/* END OF Link dark. */
