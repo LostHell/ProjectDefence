@@ -1,5 +1,4 @@
 ﻿using Fitness2You.Data;
-using Fitness2You.Data.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
 using System;

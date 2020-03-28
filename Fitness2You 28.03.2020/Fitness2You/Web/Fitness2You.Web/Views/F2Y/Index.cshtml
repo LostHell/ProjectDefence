@@ -1,0 +1,73 @@
+﻿@model IEnumerable<UsersViewModel>
+
+@{
+    ViewData["Title"] = "Admin Panel";
+}
+
+<main class="site-content home">
+    <section class="site-wrapper">
+        <section class="benefits">
+            <h2 class="text-center">Admin Panel</h2>
+            <section class="benefits-content">
+                <article class="benefit">
+                    <section class="b-header">
+                        <div class="icon">
+                            <img src="~/img/icons/benefits.png" alt="Icon not found!">
+                        </div>
+                        <a href="#">Benefits</a>
+                    </section>
+                </article>
+                <article class="benefit">
+                    <section class="b-header">
+                        <div class="icon">
+                            <img src="~/img/icons/classes.png" alt="Icon not found!">
+                        </div>
+                        <a href="#">Classes</a>
+                    </section>
+                </article>
+                <article class="benefit">
+                    <section class="b-header">
+                        <div class="icon">
+                            <img src="~/img/icons/subscription.png" alt="Icon not found!">
+                        </div>
+                        <a href="/Subscriptions/AddNew">Subscriptions</a>
+                    </section>
+                </article>
+            </section>
+        </section>
+        <section class="py-5">
+            <div class="container">
+                <h1 style="margin: 2%; text-align: center;">All Users</h1>
+                <div style="padding: 5%;">
+                    <table class="table">
+                        <thead class="thead-dark">
+                            <tr>
+                                @* <th scope="col">User Id</th>*@
+                                <th scope="col">Username</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Phone Number</th>
+                                @*<th scope="col">Add Number</th>*@
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var user in Model)
+                            {
+                                <tr>
+                                    @*<th scope="row">@user.Id</th>*@
+                                    <td>@user.Username</td>
+                                    <td>@user.Email</td>
+                                    <td>@user.PhoneNumber</td>
+                                    @*<td>
+                                            <div class="button-holder">
+                                                <a href="/Users/AddPhoneNumber?tripId=Id" class="btn btn-info text-uppercase">Add</a>
+                                            </div>
+                                        </td>*@
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+    </section>
+</main>

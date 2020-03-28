@@ -10,7 +10,7 @@ namespace Fitness2You.Services
 
         Task ChangePassword(string username, string oldPassword, string newPassword);
 
-        Task Register(string username, string email, string password);
+        Task Register(string username, string email, string phoneNumber, string password);
 
         Task Login(string username, string password);
 

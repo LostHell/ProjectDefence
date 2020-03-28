@@ -50,7 +50,7 @@ namespace Fitness2You.Controllers
                 return View(register);
             }
 
-            await usersService.Register(register.Username, register.Email, register.Password);
+            await usersService.Register(register.Username, register.Email, register.PhoneNumber, register.Password);
 
             return Redirect("/Users/Login");
         }

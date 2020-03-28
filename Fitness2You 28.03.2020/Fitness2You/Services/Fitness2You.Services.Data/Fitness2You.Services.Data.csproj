@@ -1,0 +1,34 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <CodeAnalysisRuleSet>..\..\Rules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <AdditionalFiles Include="..\..\stylecop.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.2.0" />
+    <PackageReference Include="StyleCop.Analyzers" Version="1.2.0-beta.164" PrivateAssets="all">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Data\Fitness2You.Data.Common\Fitness2You.Data.Common.csproj" />
+    <ProjectReference Include="..\..\Data\Fitness2You.Data.Models\Fitness2You.Data.Models.csproj" />
+    <ProjectReference Include="..\..\Web\Fitness2You.Web.ViewModels\Fitness2You.Web.ViewModels.csproj" />
+    <ProjectReference Include="..\Fitness2You.Services.Mapping\Fitness2You.Services.Mapping.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="F2YServices\" />
+    <Folder Include="UsersServices\" />
+  </ItemGroup>
+
+</Project>

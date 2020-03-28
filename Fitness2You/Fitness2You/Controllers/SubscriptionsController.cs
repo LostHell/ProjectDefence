@@ -8,5 +8,10 @@ namespace Fitness2You.Controllers
         {
             return View();
         }
+
+        public IActionResult AddNew()
+        {
+            return View();
+        }
     }
 }

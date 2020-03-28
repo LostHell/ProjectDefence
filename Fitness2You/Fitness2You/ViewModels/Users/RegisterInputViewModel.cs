@@ -13,6 +13,11 @@ namespace Fitness2You.ViewModels.Users
         [EmailAddress]
         public string Email { get; set; }
 
+        [Required(ErrorMessage = "Phone number is Required.")]
+        [Phone]
+        [StringLength(20, MinimumLength = 6)]
+        public string PhoneNumber { get; set; }
+
         [Required(ErrorMessage = "Password is Required.")]
         [DataType(DataType.Password)]
         [StringLength(30, ErrorMessage = "Password must be between 6 and 30 characters long", MinimumLength = 6)]

@@ -27,7 +27,7 @@ namespace Fitness2You.Services
 
             if (result.Succeeded)
             {
-                
+
             }
 
             await signInManager.RefreshSignInAsync(user);
@@ -53,12 +53,13 @@ namespace Fitness2You.Services
             await signInManager.SignOutAsync();
         }
 
-        public async Task Register(string username, string email, string password)
+        public async Task Register(string username, string email, string phoneNumber, string password)
         {
             var user = new IdentityUser
             {
                 UserName = username,
                 Email = email,
+                PhoneNumber = phoneNumber,
             };
 
             var result = await userManager.CreateAsync(user, password);
@@ -67,11 +68,29 @@ namespace Fitness2You.Services
             {
 
             }
+
+            var userId = user.Id;
+
+            await AddUserInRole(userId);
         }
 
         public bool UsernameExists(string username)
         {
             return this.db.Users.Any(x => x.UserName == username);
+        }
+
+        private async Task AddUserInRole(string id)
+        {
+            var role = db.Roles.FirstOrDefault(x => x.Name == "User");
+
+            var userInRole = new IdentityUserRole<string>
+            {
+                UserId = id,
+                RoleId = role.Id,
+            };
+
+            await db.UserRoles.AddAsync(userInRole);
+            await db.SaveChangesAsync();
         }
     }
 }
