@@ -1,0 +1,56 @@
+﻿@model IList<AllUserViewModel>
+@{
+    ViewData["Title"] = "Users page";
+}
+
+<main class="site-content admin">
+    @if (this.User.IsInRole("Admin"))
+    {
+        <h2>Welcome ADMIN!</h2>
+        <section class="nav">
+            <section class="site-wrapper">
+                <nav class="admin-nav">
+                    <a asp-controller="Subscriptions" asp-action="OurSubsctiprions">Subscriptions</a>
+                    <a asp-controller="Classes" asp-action="OurClasses">Classes</a>
+                    <a asp-controller="Users" asp-action="AllUser" class="active">Users</a>
+                    <a asp-controller="Trainers" asp-action="Employees">Trainers</a>
+                    <a href="#">Contacts</a>
+                </nav>
+            </section>
+        </section>
+        <section class="site-wrapper">
+            <section class="main">
+                <section class="add-section">
+                    <a href="#">
+                        <i class="fas fa-plus-circle"></i>
+                    </a>
+                </section>
+                <section class="users">
+                    <table class="gridtable">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Username</th>
+                                <th>Email</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var allUser in Model)
+                            {
+                                <tr class="datarow">
+                                    <td data-name="ID">@allUser.Id</td>
+                                    <td data-name="Username">@allUser.Username</td>
+                                    <td data-name="Email">@allUser.Email</td>
+                                    <td data-name="Actions" class="card-actions">
+                                        <a href="#" class="view">View</a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </section>
+            </section>
+        </section>
+    }
+</main>

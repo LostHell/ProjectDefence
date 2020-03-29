@@ -1,0 +1,81 @@
+table.gridtable {
+    margin: 0 auto;
+    width: 100%;
+    font: inherit;
+    color: #3a3a3a;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+table.gridtable th {
+    color: #3a3a3a;
+}
+
+table.gridtable td {
+    padding: 0.75rem;
+    color: #3a3a3a;
+}
+
+table.gridtable tr {
+    border-bottom: 1px solid #4E5B6C;
+}
+
+/* Smartphone  */
+@media only screen and (min-width : 220px)  and (max-width : 629px) {
+    table tr {
+        display: block;
+        margin-top: 1rem;
+    }
+
+    table td {
+        display: block;
+        text-align: right;
+        border-radius: 5px;
+        margin-bottom: 1px;
+        min-height: 14px;
+        position: relative;
+    }
+
+    table td:last-child {
+        padding-bottom: 1rem;
+    }
+
+    table td a {
+        position: absolute;
+        top: 0;
+        right: 0.5rem;
+    }
+
+    table td:before {
+        content: attr(data-name);
+        float: left;
+        font-weight: bold;
+    }
+}
+
+/* Large tablet  */
+@media only screen and (min-width : 768px)  and (max-width : 1024px) {
+    table.gridtable {
+        width: 100%;
+    }
+}
+
+
+/* Small tablet  */
+@media only screen and (min-width : 630px)  and (max-width : 767px) {
+    table.gridtable {
+        width: 100%;
+    }
+}
+
+
+/* Smartphone  */
+@media only screen and (min-width : 220px)  and (max-width : 629px) {
+    table.gridtable {
+        width: 100%;
+    }
+
+    table thead {
+        display: none;
+    }
+}

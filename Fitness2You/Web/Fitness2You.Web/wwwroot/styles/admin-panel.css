@@ -1,0 +1,198 @@
+.site-content.admin > h2 {
+    text-align: center;
+}
+.site-content.admin .nav {
+    text-align: center;
+    background: var(--main-text-black);
+}
+
+.site-content.admin .nav .admin-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.75rem;
+}
+
+.site-content.admin .nav .admin-nav a {
+    padding: 0.5rem 0;
+    flex: 1;
+    background: var(--main-text-black);
+    color: var(--main-text-white);
+}
+
+.site-content.admin .nav .admin-nav a.active {
+    background: var(--main-text-color);
+    color: var(--main-text-white);
+}
+
+/* ADD SECTION */
+
+.site-content.admin .add-section {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+
+.site-content.admin .add-section a {
+    font-size: 2rem;
+    padding: 0 1rem;
+    color: var(--main-text-color);
+}
+
+/* ADD SECTION */
+
+/* PANELS ACTIONS */
+
+.site-content.admin .card-actions {
+    display: flex;
+    justify-content: space-between;
+}
+
+.site-content.admin .card-actions a {
+    flex: 1;
+    padding: 0.5rem;
+    color: var(--main-text-white);
+}
+
+.site-content.admin .card-actions a.view {
+    background: var(--main-color-info);
+}
+
+.site-content.admin .card-actions a.edit {
+    background: var(--main-color-warning);
+}
+
+.site-content.admin .card-actions a.delete {
+    background: var(--main-color-danger);
+}
+
+/* END OF PANELS ACTIONS */
+
+
+/* SUBSCRIPTIONS & CLASSES */
+.site-content.admin .subs,
+.site-content.admin .classes,
+.site-content.admin .trainers {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-gap: var(--main-grid-gap);
+    text-align: center;
+}
+
+.site-content.admin .sub,
+.site-content.admin .class,
+.site-content.admin .trainer {
+    border: 1px solid var(--main-text-gray);
+}
+
+.site-content.admin .sub-img,
+.site-content.admin .class-img,
+.site-content.admin .trainer-img {
+    position: relative;
+    overflow: hidden;
+}
+
+.site-content.admin .sub-img:after,
+.site-content.admin .class-img:after,
+.site-content.admin .trainer-img:after {
+    display: block;
+    content: '';
+    padding-top: 75%;
+}
+
+.site-content.admin .sub-img img,
+.site-content.admin .class-img img,
+.site-content.admin .trainer-img img {
+    display: block;
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.site-content.admin .sub-name,
+.site-content.admin .sub-price,
+.site-content.admin .sub-discount,
+.site-content.admin .class-name,
+.site-content.admin .class-price,
+.site-content.admin .class-discount,
+.site-content.admin .trainer-name,
+.site-content.admin .trainer-title {
+    border-bottom: 1px solid var(--main-text-gray);
+}
+
+.site-content.admin .sub-name,
+.site-content.admin .sub-price,
+.site-content.admin .sub-discount,
+.site-content.admin .sub-status,
+.site-content.admin .class-name,
+.site-content.admin .class-price,
+.site-content.admin .class-discount,
+.site-content.admin .class-status,
+.site-content.admin .trainer-name,
+.site-content.admin .trainer-title,
+.site-content.admin .trainer-salary
+{
+    padding: 0.5rem 0;
+}
+
+.site-content.admin .sub-name,
+.site-content.admin .class-name,
+.site-content.admin .trainer-name {
+    font-weight: bold;
+    font-size: 1.05rem;
+}
+
+.site-content.admin .sub-price,
+.site-content.admin .class-price,
+.site-content.admin .trainer-salary {
+    font-weight: bold;
+}
+
+/* END OF SUBSCRIPTIONS & CLASSES */
+
+/* CONTACTS */
+
+.site-content.admin .contacts-form .form-label {
+    position: relative;
+    margin: 0.75rem 0;
+}
+
+.site-content.admin .contacts-form .form-label i {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    color: var(--main-text-gray);
+    transition: var(--main-transition-slow);
+}
+
+.site-content.admin .contacts-form .form-label input:hover + i,
+.site-content.admin .contacts-form .form-label input:focus + i {
+    color: var(--main-text-color);
+}
+
+.site-content.admin .contacts-form .form-label input:not([type='submit']) {
+    padding-left: 2.5rem;
+}
+
+/* END OF CONTACTS */
+
+
+/* RESPONSIVE */
+
+@media screen and (min-width: 500px) {
+    .site-content.admin .subs,
+    .site-content.admin .classes,
+    .site-content.admin .trainers {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .site-content.admin .subs,
+    .site-content.admin .classes,
+    .site-content.admin .trainers {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}

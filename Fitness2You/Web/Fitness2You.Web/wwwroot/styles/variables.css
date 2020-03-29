@@ -1,0 +1,31 @@
+:root {
+    /* COLORS */
+    --main-background-color: #000000;
+    --main-gradient-color: linear-gradient(135deg, rgba(75,162,23,1) 0%, rgba(56,177,67,1) 100%);
+    --main-text-color: #38b143;
+    --main-text-white: white;
+    --main-text-black: #000000;
+    --main-text-gray: #D3D3D3;
+    --main-text-gray-light: #eef3f6;
+    --main-text-dark-gray: #555555;
+
+    /* DISTANCES */
+    --main-grid-gap: 2.5rem;
+
+    /* DIMENSIONS */
+    --main-input-button-width: 10rem;
+
+    /* BORDERS */
+    --main-border-width: 3px;
+    --main-border-radius: 7px;
+
+    /* TRANSITIONS & TIMING */
+    --main-transition-slow: 0.4s;
+    --main-transition-fast: 0.2s;
+
+    /* NOTIFICATIONS & ALERTS */
+    --main-color-success: #3ADB76;
+    --main-color-info: #0099CC;
+    --main-color-warning: #FFAE00;
+    --main-color-danger: #D21F3C;
+}

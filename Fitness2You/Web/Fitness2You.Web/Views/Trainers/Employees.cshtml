@@ -1,0 +1,56 @@
+﻿@{
+    ViewData["Title"] = "Employees page";
+}
+
+<main class="site-content admin">
+    @if (this.User.IsInRole("Admin"))
+    {
+        <h2>Welcome ADMIN!</h2>
+        <section class="nav">
+            <section class="site-wrapper">
+                <nav class="admin-nav">
+                    <a asp-controller="Subscriptions" asp-action="OurSubsctiprions">Subscriptions</a>
+                    <a asp-controller="Classes" asp-action="OurClasses">Classes</a>
+                    <a asp-controller="Users" asp-action="AllUser">Users</a>
+                    <a asp-controller="Trainers" asp-action="Employees" class="active">Trainers</a>
+                    <a href="#">Contacts</a>
+                </nav>
+            </section>
+        </section>
+        <section class="site-wrapper">
+            <section class="main">
+                <section class="add-section">
+                    <a href="#">
+                        <i class="fas fa-plus-circle"></i>
+                    </a>
+                </section>
+                <section class="trainers">
+                    <article class="trainer">
+                        <section class="trainer-img">
+                            <img src="https://images.squarespace-cdn.com/content/v1/5aae8045f93fd4b8720dea05/1522770220652-HLPSEMK4V6Z2YZLFCXKU/ke17ZwdGBToddI8pDm48kHF09r3Up_Jov_w9jUghTBN7gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z4YTzHvnKhyp6Da-NYroOW3ZGjoBKy3azqku80C789l0mhydAgiKdIfeAoxVgE7c7rYdPoFiOXeQn2Rxyy3LcZmi7RY2j8jllvDZOfmA_jgLA/Sarah+Dec+17_47.jpg?format=1000w"
+                                 alt="Image not found!">
+                        </section>
+                        <section class="trainer-name">Faik Zinkin</section>
+                        <section class="trainer-title">Personal trainer</section>
+                        <section class="trainer-salary">1200 €</section>
+                        <section class="card-actions">
+                            <a href="#" class="view">View</a>
+                        </section>
+                    </article>
+                    <article class="trainer">
+                        <section class="trainer-img">
+                            <img src="https://images.assetsdelivery.com/compings_v2/kopitinphoto/kopitinphoto1509/kopitinphoto150900597.jpg"
+                                 alt="Image not found!">
+                        </section>
+                        <section class="trainer-name">Lelka ti</section>
+                        <section class="trainer-title">Yoga trainer</section>
+                        <section class="trainer-salary">1600 €</section>
+                        <section class="card-actions">
+                            <a href="#" class="view">View</a>
+                        </section>
+                    </article>
+                </section>
+            </section>
+        </section>
+    }
+</main>

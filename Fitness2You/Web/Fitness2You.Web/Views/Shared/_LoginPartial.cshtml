@@ -1,0 +1,46 @@
+﻿@using Fitness2You.Common
+@using Fitness2You.Data.Models
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+<nav class="site-nav">
+    <ul>
+        @if (this.SignInManager.IsSignedIn(this.User))
+        {
+            <li>
+                <a asp-controller="Subscriptions" asp-action="OurSubsctiprions">Subscription</a>
+            </li>
+            <li>
+                <a asp-controller="Trainers" asp-action="OurTrainers">Our Trainers</a>
+            </li>
+            <li>
+                <a asp-controller="Classes" asp-action="OurClasses">Our Classes</a>
+            </li>
+            @if (this.User.IsInRole("Admin"))
+            {
+                <li>
+                    <a asp-controller="Account" asp-action="AdminPanel">Admin</a>
+                </li>
+            }
+            else
+            {
+                <li>
+                    <a asp-controller="Account" asp-action="ChangePassword">My account</a>
+                </li>
+            }
+            <li>
+                <a asp-controller="Users" asp-action="Logout">Logout</a>
+            </li>
+        }
+        else
+        {
+            <li>
+                <a asp-controller="Users" asp-action="Register">Sign up</a>
+            </li>
+            <li>
+                <a asp-controller="Users" asp-action="Login">Log in</a>
+            </li>
+        }
+    </ul>
+</nav>
