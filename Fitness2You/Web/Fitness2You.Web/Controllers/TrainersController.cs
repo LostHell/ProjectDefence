@@ -1,13 +1,19 @@
 ﻿namespace Fitness2You.Web.Controllers
 {
+    using System.Threading.Tasks;
+
+    using Fitness2You.Services.Data.TrainerServices;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
 
     [Authorize]
     public class TrainersController : Controller
     {
-        public TrainersController()
+        private readonly ITrainersServices trainersServices;
+
+        public TrainersController(ITrainersServices trainersServices)
         {
+            this.trainersServices = trainersServices;
         }
 
         public IActionResult OurTrainers()
@@ -16,9 +22,10 @@
         }
 
         [Authorize(Roles ="Admin")]
-        public IActionResult Employees()
+        public async Task<IActionResult> Employees()
         {
-            return this.View();
+            var trainers = await this.trainersServices.GetEmployees();
+            return this.View(trainers);
         }
     }
 }

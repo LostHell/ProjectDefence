@@ -1,0 +1,55 @@
+﻿@{
+    ViewData["Title"] = "Contact page";
+}
+
+<main class="site-content admin">
+    <h2>Welcome ADMIN!</h2>
+    <section class="nav">
+        <section class="site-wrapper">
+            <nav class="admin-nav">
+                <a asp-controller="Subscriptions" asp-action="OurSubsctiprions">Subscriptions</a>
+                <a asp-controller="Classes" asp-action="OurClasses">Classes</a>
+                <a asp-controller="Users" asp-action="AllUser">Users</a>
+                <a asp-controller="Trainers" asp-action="Employees">Trainers</a>
+                <a asp-controller="Contact" asp-action="ContactMe" class="active">Contacts</a>
+            </nav>
+        </section>
+    </section>
+    <section class="site-wrapper">
+        <section class="main">
+            <section class="add-section">
+                <a href="#">
+                    <i class="fas fa-plus-circle"></i>
+                </a>
+            </section>
+            <section class="contacts">
+                <h2>Change contact details</h2>
+                <form class="contacts-form">
+                    <section class="form-label">
+                        <input type="text" name="city" placeholder="City..">
+                        <i class="fas fa-user"></i>
+                    </section>
+                    <section class="form-label">
+                        <input type="text" name="zip-code" placeholder="Zip code...">
+                        <i class="fas fa-lock"></i>
+                    </section>
+                    <section class="form-label">
+                        <input type="text" name="street" placeholder="Street...">
+                        <i class="fas fa-lock"></i>
+                    </section>
+                    <section class="form-label">
+                        <input type="email" name="email" placeholder="Email...">
+                        <i class="fas fa-lock"></i>
+                    </section>
+                    <section class="form-label">
+                        <input type="text" name="phone" placeholder="Phone number...">
+                        <i class="fas fa-lock"></i>
+                    </section>
+                    <section class="form-label">
+                        <input type="submit" value="Save changes!">
+                    </section>
+                </form>
+            </section>
+        </section>
+    </section>
+</main>
