@@ -1,18 +1,61 @@
-﻿@{
-    ViewData["Title"] = "Admin page";
+﻿@model IList<SubscriptionsViewModel>
+@{
+    ViewData["Title"] = "Subscription page";
 }
 
 <main class="site-content admin">
-    <h2>Welcome ADMIN!</h2>
-    <section class="nav">
-        <section class="site-wrapper">
-            <nav class="admin-nav">
-                <a asp-controller="Subscriptions" asp-action="OurSubsctiprions">Subscriptions</a>
-                <a asp-controller="Classes" asp-action="OurClasses">Classes</a>
-                <a asp-controller="Users" asp-action="AllUser">Users</a>
-                <a asp-controller="Trainers" asp-action="Employees">Trainers</a>
-                <a asp-controller="Contact" asp-action="ContactMe">Contacts</a>
-            </nav>
+    @if (this.User.IsInRole("Admin"))
+    {
+        <h2>Welcome ADMIN!</h2>
+        <section class="nav">
+            <section class="site-wrapper">
+                <nav class="admin-nav">
+                    <a asp-controller="Subscriptions" asp-action="OurSubsctiprions" class="active">Subscriptions</a>
+                    <a asp-controller="Classes" asp-action="OurClasses">Classes</a>
+                    <a asp-controller="Users" asp-action="AllUser">Users</a>
+                    <a asp-controller="Trainers" asp-action="Employees">Trainers</a>
+                    <a asp-controller="Contact" asp-action="ContactMe">Contacts</a>
+                </nav>
+            </section>
         </section>
-    </section>
+
+        <section class="site-wrapper">
+            <section class="main">
+                <section class="add-section">
+                    <a href="#">
+                        <i class="fas fa-plus-circle"></i>
+                    </a>
+                </section>
+                }
+
+                <section class="subs">
+                    @foreach (var subscriptions in Model)
+                    {
+                        <article class="sub">
+                            <section class="sub-img">
+
+                                <img src="@subscriptions.ImageUrl" alt="Image not found!">
+                            </section>
+                            <section class="sub-name">@subscriptions.Name</section>
+                            <section class="sub-price">@subscriptions.Price €</section>
+                            <section class="sub-discount">@subscriptions.Discount %</section>
+                            @if (subscriptions.IsActive == "True")
+                            {
+                                <section class="sub-status">Active!</section>
+                            }
+                            else
+                            {
+                                <section class="sub-status">No Active!</section>
+                            }
+                            <section class="card-actions">
+                                <a href="#" class="view">View</a>
+                                <a href="#" class="edit">Edit</a>
+                                <a href="#" class="delete">Delete</a>
+                            </section>
+                        </article>
+                    }
+                </section>
+            </section>
+        </section>
+    }
 </main>

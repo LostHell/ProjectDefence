@@ -8,6 +8,7 @@
     using Fitness2You.Data.Models;
     using Fitness2You.Data.Repositories;
     using Fitness2You.Data.Seeding;
+    using Fitness2You.Services.Data.AccountServices;
     using Fitness2You.Services.Data.ClassService;
     using Fitness2You.Services.Data.FooterServices;
     using Fitness2You.Services.Data.SubscriptionsServices;
@@ -67,6 +68,7 @@
             services.AddTransient<ISubscriptionsServices, SubscriptionsServices>();
             services.AddTransient<IClassesServices, ClassesServices>();
             services.AddTransient<ITrainersServices, TrainersServices>();
+            services.AddTransient<IAccountServices, AccountServices>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
