@@ -1,4 +1,4 @@
-﻿@model IList<SubscriptionsViewModel>
+﻿@model IList<SubscriptionsInputViewModel>
 @{
     ViewData["Title"] = "Subscriptions page";
 }
@@ -24,7 +24,7 @@
             @if (this.User.IsInRole("Admin"))
             {
                 <section class="add-section">
-                    <a href="#">
+                    <a asp-controller="Subscriptions" asp-action="AddSubscription">
                         <i class="fas fa-plus-circle"></i>
                     </a>
                 </section>
@@ -41,7 +41,7 @@
                         <section class="sub-name">@subscriptions.Name</section>
                         <section class="sub-price">@subscriptions.Price €</section>
                         <section class="sub-discount">@subscriptions.Discount %</section>
-                        @if (subscriptions.IsActive == "True")
+                        @if (subscriptions.IsActive == true)
                         {
                             <section class="sub-status">Active!</section>
                         }
@@ -53,15 +53,18 @@
                         {
                             <section class="card-actions">
                                 <a href="#" class="view">View</a>
-                                <a href="#" class="edit">Edit</a>
-                                <a href="#" class="delete">Delete</a>
+                                <a asp-controller="Subscriptions" asp-action="EditSubscription" asp-route-id="@subscriptions.Id" class="edit">Edit</a>
+                                <a asp-controller="Subscriptions" asp-action="DeleteSubscription" asp-route-id="@subscriptions.Id" class="delete">Delete</a>
                             </section>
                         }
                         else if (this.User.IsInRole("User"))
                         {
                             <section class="card-actions">
                                 <a href="#" class="view">View</a>
-                                <a href="#" class="edit">Take me</a>
+                                @if (subscriptions.IsActive == true)
+                                {
+                                    <a href="#" class="edit">Take me</a>
+                                }
                             </section>
                         }
                     </article>

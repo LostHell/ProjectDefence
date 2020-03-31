@@ -18,9 +18,9 @@
             this.repositorySubscription = repositorySubscription;
         }
 
-        public async Task<IList<SubscriptionsViewModel>> GetSubscriptions()
+        public async Task<IList<SubscriptionsInputViewModel>> GetSubscriptions()
         {
-            var allSubscriptions = await this.repositorySubscription.All().To<SubscriptionsViewModel>().ToListAsync();
+            var allSubscriptions = await this.repositorySubscription.All().To<SubscriptionsInputViewModel>().ToListAsync();
 
             return allSubscriptions;
         }

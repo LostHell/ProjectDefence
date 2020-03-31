@@ -7,6 +7,6 @@
 
     public interface IAccountServices
     {
-        Task<IList<SubscriptionsViewModel>> GetSubscriptions();
+        Task<IList<SubscriptionsInputViewModel>> GetSubscriptions();
     }
 }

@@ -7,6 +7,14 @@
 
     public interface ISubscriptionsServices
     {
-        Task<IList<SubscriptionsViewModel>> GetAll();
+        Task<IList<SubscriptionsInputViewModel>> GetAll();
+
+        Task AddNewSubscriptionAsync(SubscriptionsInputViewModel subscriptions);
+
+        Task<SubscriptionsInputViewModel> GetIdAsync(int? id);
+
+        Task EditAsync(SubscriptionsInputViewModel subscriptions);
+
+        Task DeleteAsync(SubscriptionsInputViewModel subscriptions);
     }
 }

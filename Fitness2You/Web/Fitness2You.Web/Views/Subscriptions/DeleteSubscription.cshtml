@@ -1,0 +1,58 @@
+﻿@model SubscriptionsInputViewModel
+@{
+    ViewData["Title"] = "Delete page";
+}
+<main class="site-content admin">
+    @if (this.User.IsInRole("Admin"))
+    {
+        <h2>Welcome ADMIN!</h2>
+        <section class="nav">
+            <section class="site-wrapper">
+                <nav class="admin-nav">
+                    <a asp-controller="Subscriptions" asp-action="OurSubsctiprions" class="active">Subscriptions</a>
+                    <a asp-controller="Classes" asp-action="OurClasses">Classes</a>
+                    <a asp-controller="Users" asp-action="AllUser">Users</a>
+                    <a asp-controller="Trainers" asp-action="Employees">Trainers</a>
+                    <a asp-controller="Contact" asp-action="ContactMe">Contacts</a>
+                </nav>
+            </section>
+        </section>
+
+        <section class="site-wrapper">
+            <section class="main">
+                <section class="add-section">
+                    <a asp-controller="Subscriptions" asp-action="AddSubscription">
+                        <i class="fas fa-plus-circle"></i>
+                    </a>
+                </section>
+                <section class="subs">
+                    <article class="sub">
+                        <section class="sub-img">
+
+                            <img src="@Model.ImageUrl" alt="Image not found!">
+                        </section>
+                        <section class="sub-name">@Model.Name</section>
+                        <section class="sub-price">@Model.Price €</section>
+                        <section class="sub-discount">@Model.Discount %</section>
+                        @if (Model.IsActive == true)
+                        {
+                            <section class="sub-status">Active!</section>
+                        }
+                        else
+                        {
+                            <section class="sub-status">No Active!</section>
+                        }
+                        <form method="post">
+                            <section class="card-actions">
+                                <a class="delete">
+                                    <input type="submit" value="Delete"/>
+                                    <input type="submit" value="Go Back" onclick="history.back()"/>
+                                </a>
+                            </section>
+                        </form>
+                    </article>
+                </section>
+            </section>
+        </section>
+    }
+</main>
