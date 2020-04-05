@@ -18,9 +18,9 @@
             this.repositoryClass = repositoryClass;
         }
 
-        public async Task<IList<ClassesViewModel>> GetClasses()
+        public async Task<IList<ClassesInputViewModel>> GetClasses()
         {
-            var allClasses = await this.repositoryClass.All().To<ClassesViewModel>().ToListAsync();
+            var allClasses = await this.repositoryClass.All().To<ClassesInputViewModel>().ToListAsync();
 
             return allClasses;
         }

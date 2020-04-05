@@ -7,6 +7,6 @@
 
     public interface ITrainersServices
     {
-        Task<IList<EmployeeViewModel>> GetEmployees();
+        Task<IList<EmployeeInputViewModel>> GetEmployees();
     }
 }

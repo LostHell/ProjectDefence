@@ -2,8 +2,10 @@
 {
     using System.Threading.Tasks;
 
-    using Fitness2You.Services.Data.AccountServices;
+    using Fitness2You.Services.Data.AdminServices;
+    using Fitness2You.Web.ViewModels.Class;
     using Fitness2You.Web.ViewModels.Subscription;
+    using Fitness2You.Web.ViewModels.Trainer;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
 
@@ -29,6 +31,93 @@
             return this.View(classes);
         }
 
+        public IActionResult AddClass()
+        {
+            return this.View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> AddClass(ClassesInputViewModel classes)
+        {
+            if (!this.ModelState.IsValid)
+            {
+                return this.View(classes);
+            }
+
+            await this.adminServices.AddNewClassAsync(classes);
+            return this.Redirect("/AdminPanel/Classes");
+        }
+
+        public async Task<IActionResult> EditClass(int? id)
+        {
+            if (id == null)
+            {
+                return this.NotFound();
+            }
+
+            var currentClass = await this.adminServices.GetClassIdAsync(id);
+
+            if (currentClass == null)
+            {
+                return this.NotFound();
+            }
+
+            return this.View(currentClass);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> EditClass(int id, ClassesInputViewModel classes)
+        {
+            if (id != classes.Id)
+            {
+                return this.NotFound();
+            }
+
+            if (!this.ModelState.IsValid)
+            {
+                return this.View(classes);
+            }
+
+            await this.adminServices.EditClassAsync(classes);
+            return this.Redirect("/AdminPanel/Classes");
+        }
+
+        public async Task<IActionResult> DeleteClass(int? id)
+        {
+            if (id == null)
+            {
+                return this.NotFound();
+            }
+
+            var currentClass = await this.adminServices.GetClassIdAsync(id);
+            if (currentClass == null)
+            {
+                return this.NotFound();
+            }
+
+            return this.View(currentClass);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteClass(int id, ClassesInputViewModel classes)
+        {
+            if (id != classes.Id)
+            {
+                return this.NotFound();
+            }
+
+            if (!this.ModelState.IsValid)
+            {
+                this.ModelState.AddModelError(string.Empty, "Sorry we cannot delete this Item!");
+            }
+
+            await this.adminServices.DeleteClassAsync(classes);
+            return this.Redirect("/AdminPanel/Classes");
+        }
+
         public async Task<IActionResult> AllUser()
         {
             var users = await this.adminServices.GetAllUsers();
@@ -40,6 +129,24 @@
         {
             var trainers = await this.adminServices.GetEmployees();
             return this.View(trainers);
+        }
+
+        public IActionResult AddEmployee()
+        {
+            return this.View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> AddEmployee(EmployeeInputViewModel employee)
+        {
+            if (!this.ModelState.IsValid)
+            {
+                return this.View(employee);
+            }
+
+            await this.adminServices.AddNewEmployeeAsync(employee);
+            return this.Redirect("/AdminPanel/Employees");
         }
 
         public IActionResult ContactMe()
@@ -72,7 +179,7 @@
                 return this.NotFound();
             }
 
-            var subscription = await this.adminServices.GetIdAsync(id);
+            var subscription = await this.adminServices.GetSubscriptionIdAsync(id);
             if (subscription == null)
             {
                 return this.NotFound();
@@ -95,7 +202,7 @@
                 return this.View(subscriptions);
             }
 
-            await this.adminServices.EditAsync(subscriptions);
+            await this.adminServices.EditSubscriptionAsync(subscriptions);
             return this.Redirect("/AdminPanel/Admin");
         }
 
@@ -106,7 +213,7 @@
                 return this.NotFound();
             }
 
-            var subscription = await this.adminServices.GetIdAsync(id);
+            var subscription = await this.adminServices.GetSubscriptionIdAsync(id);
             if (subscription == null)
             {
                 return this.NotFound();
@@ -129,7 +236,7 @@
                 this.ModelState.AddModelError(string.Empty, "Sorry we cannot delete this Item!");
             }
 
-            await this.adminServices.DeleteAsync(subscriptions);
+            await this.adminServices.DeleteSubscriptionAsync(subscriptions);
             return this.Redirect("/AdminPanel/Admin");
         }
     }

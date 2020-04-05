@@ -1,4 +1,4 @@
-﻿@model IList<EmployeeViewModel>
+﻿@model IList<EmployeeInputViewModel>
 @{
     ViewData["Title"] = "Employees page";
 }
@@ -21,7 +21,7 @@
         <section class="site-wrapper">
             <section class="main">
                 <section class="add-section">
-                    <a href="#">
+                    <a asp-controller="AdminPanel" asp-action="AddEmployee">
                         <i class="fas fa-plus-circle"></i>
                     </a>
                 </section>
@@ -36,8 +36,8 @@
                             <section class="trainer-title">@employee.Title</section>
                             <section class="trainer-salary">@employee.Salary €</section>
                             <section class="card-actions">
-                                <a href="#" class="edit">Edit</a>
-                                <a href="#" class="delete">Delete</a>
+                                <a asp-controller="AdminPanel" asp-action="EditEmployee" asp-route-id="@employee.Id" class="edit">Edit</a>
+                                <a asp-controller="AdminPanel" asp-action="DeleteEmployee" asp-route-id="@employee.Id" class="delete">Delete</a>
                             </section>
                         </article>
                     }

@@ -7,6 +7,6 @@
 
     public interface IClassesServices
     {
-        Task<IList<ClassesViewModel>> GetClasses();
+        Task<IList<ClassesInputViewModel>> GetClasses();
     }
 }

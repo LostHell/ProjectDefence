@@ -8,7 +8,7 @@
     using Fitness2You.Data.Models;
     using Fitness2You.Data.Repositories;
     using Fitness2You.Data.Seeding;
-    using Fitness2You.Services.Data.AccountServices;
+    using Fitness2You.Services.Data.AdminServices;
     using Fitness2You.Services.Data.ClassService;
     using Fitness2You.Services.Data.FooterServices;
     using Fitness2You.Services.Data.SubscriptionsServices;

@@ -1,4 +1,4 @@
-﻿@model IList<ClassesViewModel>
+﻿@model IList<ClassesInputViewModel>
 @{
     ViewData["Title"] = "Classes page";
 }
@@ -21,7 +21,7 @@
         <section class="site-wrapper">
             <section class="main">
                 <section class="add-section">
-                    <a href="#">
+                    <a asp-controller="AdminPanel" asp-action="AddClass">
                         <i class="fas fa-plus-circle"></i>
                     </a>
                 </section>
@@ -44,8 +44,8 @@
                                 <section class="class-status">No Active!</section>
                             }
                             <section class="card-actions">
-                                <a href="#" class="edit">Edit</a>
-                                <a href="#" class="delete">Delete</a>
+                                <a asp-controller="AdminPanel" asp-action="EditClass" asp-route-id="@classes.Id" class="edit">Edit</a>
+                                <a asp-controller="AdminPanel" asp-action="DeleteClass" asp-route-id="@classes.Id" class="delete">Delete</a>
                             </section>
                         </article>
                     }

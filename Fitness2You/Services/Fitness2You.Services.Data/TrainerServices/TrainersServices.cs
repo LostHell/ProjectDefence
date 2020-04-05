@@ -18,9 +18,9 @@
             this.repositoryTrainer = repositoryTrainer;
         }
 
-        public async Task<IList<EmployeeViewModel>> GetEmployees()
+        public async Task<IList<EmployeeInputViewModel>> GetEmployees()
         {
-            var allTrainers = await this.repositoryTrainer.All().To<EmployeeViewModel>().ToListAsync();
+            var allTrainers = await this.repositoryTrainer.All().To<EmployeeInputViewModel>().ToListAsync();
 
             return allTrainers;
         }
