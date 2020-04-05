@@ -1,6 +1,6 @@
-﻿@model ClassesInputViewModel
+﻿@model EmployeeInputViewModel
 @{
-    ViewData["Title"] = "Edit class";
+    ViewData["Title"] = "Edit employee";
 }
 
 <main class="site-content admin">
@@ -11,9 +11,9 @@
             <section class="site-wrapper">
                 <nav class="admin-nav">
                     <a asp-controller="AdminPanel" asp-action="Admin">Subscriptions</a>
-                    <a asp-controller="AdminPanel" asp-action="Classes" class="active">Classes</a>
+                    <a asp-controller="AdminPanel" asp-action="Classes">Classes</a>
                     <a asp-controller="AdminPanel" asp-action="AllUser">Users</a>
-                    <a asp-controller="AdminPanel" asp-action="Employees">Trainers</a>
+                    <a asp-controller="AdminPanel" asp-action="Employees" class="active">Trainers</a>
                     <a asp-controller="AdminPanel" asp-action="ContactMe">Contacts</a>
                 </nav>
             </section>
@@ -21,13 +21,13 @@
         <section class="site-wrapper">
             <section class="main">
                 <section class="contacts">
-                    <h2>Edit Subscription</h2>
-                    <form method="post" class="contacts-form" asp-controller="AdminPanel" asp-action="EditClass">
+                    <h2>Edit Employee</h2>
+                    <form method="post" class="contacts-form" asp-controller="AdminPanel" asp-action="EditEmployee">
                         <div asp-validation-summary="ModelOnly"></div>
                         <section class="form-label">
-                            <input type="text" asp-for="Name" placeholder="Name...">
+                            <input type="text" asp-for="Fullname" placeholder="Employee fullname...">
                             <i class="fas fa-file-signature"></i>
-                            <span asp-validation-for="Name" class="text-danger"></span>
+                            <span asp-validation-for="Fullname" class="text-danger"></span>
                         </section>
                         <section class="form-label">
                             <input type="text" asp-for="ImageUrl" placeholder="https://...">
@@ -35,19 +35,14 @@
                             <span asp-validation-for="ImageUrl" class="text-danger"></span>
                         </section>
                         <section class="form-label">
-                            <input type="text" asp-for="Price" placeholder="Price...">
+                            <input type="text" asp-for="Salary" placeholder="Salary...">
                             <i class="fas fa-dollar-sign"></i>
-                            <span asp-validation-for="Price" class="text-danger"></span>
+                            <span asp-validation-for="Salary" class="text-danger"></span>
                         </section>
                         <section class="form-label">
-                            <input type="text" asp-for="Discount" placeholder="Discount...">
+                            <input type="text" asp-for="Title" placeholder="Title...">
                             <i class="fas fa-percent"></i>
-                            <span asp-validation-for="Discount" class="text-danger"></span>
-                        </section>
-                        <section class="form-label">
-                            <input type="text" asp-for="IsActive" placeholder="Active(True/False)...">
-                            <i class="fas fa-check"></i>
-                            <span asp-validation-for="IsActive" class="text-danger"></span>
+                            <span asp-validation-for="Title" class="text-danger"></span>
                         </section>
                         <section class="form-label">
                             <input type="submit" value="Edit now!">

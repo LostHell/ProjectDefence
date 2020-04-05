@@ -111,7 +111,7 @@
 
             if (!this.ModelState.IsValid)
             {
-                this.ModelState.AddModelError(string.Empty, "Sorry we cannot delete this Item!");
+                this.ModelState.AddModelError(string.Empty, "Sorry we cannot delete this Class!");
             }
 
             await this.adminServices.DeleteClassAsync(classes);
@@ -146,6 +146,76 @@
             }
 
             await this.adminServices.AddNewEmployeeAsync(employee);
+            return this.Redirect("/AdminPanel/Employees");
+        }
+
+        public async Task<IActionResult> EditEmployee(string id)
+        {
+            if (id == null)
+            {
+                return this.NotFound();
+            }
+
+            var employee = await this.adminServices.GetEmployeeIdAsync(id);
+
+            if (employee == null)
+            {
+                return this.NotFound();
+            }
+
+            return this.View(employee);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> EditEmployee(string id, EmployeeInputViewModel employee)
+        {
+            if (id != employee.Id)
+            {
+                return this.NotFound();
+            }
+
+            if (!this.ModelState.IsValid)
+            {
+                return this.View(employee);
+            }
+
+            await this.adminServices.EditEmployeeAsync(employee);
+            return this.Redirect("/AdminPanel/Employees");
+        }
+
+        public async Task<IActionResult> DeleteEmployee(string id)
+        {
+            if (id == null)
+            {
+                return this.NotFound();
+            }
+
+            var employee = await this.adminServices.GetEmployeeIdAsync(id);
+
+            if (employee == null)
+            {
+                return this.NotFound();
+            }
+
+            return this.View(employee);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteEmployee(string id, EmployeeInputViewModel employee)
+        {
+            if (id != employee.Id)
+            {
+                return this.NotFound();
+            }
+
+            if (!this.ModelState.IsValid)
+            {
+                this.ModelState.AddModelError(string.Empty, "Sorry, but we can't find it this Employee!");
+            }
+
+            await this.adminServices.DeleteEmployeeAsync(employee);
             return this.Redirect("/AdminPanel/Employees");
         }
 
