@@ -3,7 +3,6 @@
     using System.Threading.Tasks;
 
     using Fitness2You.Data.Models;
-    using Fitness2You.Services.Data.AccountServices;
     using Fitness2You.Web.ViewModels.Account;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Identity;
@@ -12,25 +11,15 @@
     [Authorize]
     public class AccountController : Controller
     {
-        private readonly IAccountServices accountServices;
         private readonly UserManager<ApplicationUser> userManager;
         private readonly SignInManager<ApplicationUser> signInManager;
 
         public AccountController(
-            IAccountServices accountServices,
             UserManager<ApplicationUser> userManager,
             SignInManager<ApplicationUser> signInManager)
         {
-            this.accountServices = accountServices;
             this.userManager = userManager;
             this.signInManager = signInManager;
-        }
-
-        [Authorize(Roles = "Admin")]
-        public async Task<IActionResult> AdminPanel()
-        {
-            var subscriptions = await this.accountServices.GetSubscriptions();
-            return this.View(subscriptions);
         }
 
         public IActionResult ChangePassword()

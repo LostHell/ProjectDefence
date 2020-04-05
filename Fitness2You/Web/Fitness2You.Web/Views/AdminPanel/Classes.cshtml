@@ -1,0 +1,56 @@
+﻿@model IList<ClassesViewModel>
+@{
+    ViewData["Title"] = "Classes page";
+}
+
+<main class="site-content admin">
+    @if (this.User.IsInRole("Admin"))
+    {
+        <h2>Welcome ADMIN!</h2>
+        <section class="nav">
+            <section class="site-wrapper">
+                <nav class="admin-nav">
+                    <a asp-controller="AdminPanel" asp-action="Admin">Subscriptions</a>
+                    <a asp-controller="AdminPanel" asp-action="Classes" class="active">Classes</a>
+                    <a asp-controller="AdminPanel" asp-action="AllUser">Users</a>
+                    <a asp-controller="AdminPanel" asp-action="Employees">Trainers</a>
+                    <a asp-controller="AdminPanel" asp-action="ContactMe">Contacts</a>
+                </nav>
+            </section>
+        </section>
+        <section class="site-wrapper">
+            <section class="main">
+                <section class="add-section">
+                    <a href="#">
+                        <i class="fas fa-plus-circle"></i>
+                    </a>
+                </section>
+                <section class="classes">
+                    @foreach (var classes in Model)
+                    {
+                        <article class="class">
+                            <section class="class-img">
+                                <img src="@classes.ImageUrl" alt="Image not found!">
+                            </section>
+                            <section class="class-name">@classes.Name</section>
+                            <section class="class-price">@classes.Price €</section>
+                            <section class="class-discount">@classes.Discount %</section>
+                            @if (classes.IsActive == true)
+                            {
+                                <section class="class-status">Active!</section>
+                            }
+                            else
+                            {
+                                <section class="class-status">No Active!</section>
+                            }
+                            <section class="card-actions">
+                                <a href="#" class="edit">Edit</a>
+                                <a href="#" class="delete">Delete</a>
+                            </section>
+                        </article>
+                    }
+                </section>
+            </section>
+        </section>
+    }
+</main>

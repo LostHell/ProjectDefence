@@ -1,6 +1,7 @@
 ﻿@model SubscriptionsInputViewModel
+
 @{
-    ViewData["Title"] = "Add Subscription page";
+    ViewData["Title"] = "Edit subscription";
 }
 
 <main class="site-content admin">
@@ -10,19 +11,19 @@
         <section class="nav">
             <section class="site-wrapper">
                 <nav class="admin-nav">
-                    <a asp-controller="Subscriptions" asp-action="OurSubsctiprions" class="active">Subscriptions</a>
-                    <a asp-controller="Classes" asp-action="OurClasses">Classes</a>
-                    <a asp-controller="Users" asp-action="AllUser">Users</a>
-                    <a asp-controller="Trainers" asp-action="Employees">Trainers</a>
-                    <a asp-controller="Contact" asp-action="ContactMe">Contacts</a>
+                    <a asp-controller="AdminPanel" asp-action="Admin" class="active">Subscriptions</a>
+                    <a asp-controller="AdminPanel" asp-action="Classes">Classes</a>
+                    <a asp-controller="AdminPanel" asp-action="AllUser">Users</a>
+                    <a asp-controller="AdminPanel" asp-action="Employees">Trainers</a>
+                    <a asp-controller="AdminPanel" asp-action="ContactMe">Contacts</a>
                 </nav>
             </section>
         </section>
         <section class="site-wrapper">
             <section class="main">
                 <section class="contacts">
-                    <h2>Add new Subscription</h2>
-                    <form  method="post" class="contacts-form" asp-controller="Subscriptions" asp-action="AddSubscription">
+                    <h2>Edit Subscription</h2>
+                    <form method="post" class="contacts-form" asp-controller="AdminPanel" asp-action="EditSubscription">
                         <div asp-validation-summary="ModelOnly"></div>
                         <section class="form-label">
                             <input type="text" asp-for="Name" placeholder="Name...">
@@ -50,7 +51,7 @@
                             <span asp-validation-for="IsActive" class="text-danger"></span>
                         </section>
                         <section class="form-label">
-                            <input type="submit" value="Create now!">
+                            <input type="submit" value="Edit now!">
                         </section>
                     </form>
                 </section>

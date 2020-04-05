@@ -46,13 +46,6 @@
             return this.userRepository.All().Any(x => x.Email == email);
         }
 
-        public async Task<IList<AllUserViewModel>> GetAllUsers()
-        {
-            var allUsers = await this.userRepository.All().To<AllUserViewModel>().ToListAsync();
-
-            return allUsers;
-        }
-
         public bool UsernameExists(string username)
         {
             return this.userRepository.All().Any(x => x.UserName == username);

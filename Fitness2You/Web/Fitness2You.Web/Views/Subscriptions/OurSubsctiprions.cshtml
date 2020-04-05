@@ -4,70 +4,26 @@
 }
 
 <main class="site-content admin">
-    @if (this.User.IsInRole("Admin"))
-    {
-        <h2>Welcome ADMIN!</h2>
-        <section class="nav">
-            <section class="site-wrapper">
-                <nav class="admin-nav">
-                    <a asp-controller="Subscriptions" asp-action="OurSubsctiprions" class="active">Subscriptions</a>
-                    <a asp-controller="Classes" asp-action="OurClasses">Classes</a>
-                    <a asp-controller="Users" asp-action="AllUser">Users</a>
-                    <a asp-controller="Trainers" asp-action="Employees">Trainers</a>
-                    <a asp-controller="Contact" asp-action="ContactMe">Contacts</a>
-                </nav>
-            </section>
-        </section>
-    }
     <section class="site-wrapper">
         <section class="main">
-            @if (this.User.IsInRole("Admin"))
-            {
-                <section class="add-section">
-                    <a asp-controller="Subscriptions" asp-action="AddSubscription">
-                        <i class="fas fa-plus-circle"></i>
-                    </a>
-                </section>
-            }
-
             <section class="subs">
                 @foreach (var subscriptions in Model)
                 {
-                    <article class="sub">
-                        <section class="sub-img">
+                    @if (subscriptions.IsActive == true)
+                    {
+                        <article class="sub">
+                            <section class="sub-img">
 
-                            <img src="@subscriptions.ImageUrl" alt="Image not found!">
-                        </section>
-                        <section class="sub-name">@subscriptions.Name</section>
-                        <section class="sub-price">@subscriptions.Price €</section>
-                        <section class="sub-discount">@subscriptions.Discount %</section>
-                        @if (subscriptions.IsActive == true)
-                        {
-                            <section class="sub-status">Active!</section>
-                        }
-                        else
-                        {
-                            <section class="sub-status">No Active!</section>
-                        }
-                        @if (this.User.IsInRole("Admin"))
-                        {
-                            <section class="card-actions">
-                                <a href="#" class="view">View</a>
-                                <a asp-controller="Subscriptions" asp-action="EditSubscription" asp-route-id="@subscriptions.Id" class="edit">Edit</a>
-                                <a asp-controller="Subscriptions" asp-action="DeleteSubscription" asp-route-id="@subscriptions.Id" class="delete">Delete</a>
+                                <img src="@subscriptions.ImageUrl" alt="Image not found!">
                             </section>
-                        }
-                        else if (this.User.IsInRole("User"))
-                        {
+                            <section class="sub-name">@subscriptions.Name</section>
+                            <section class="sub-price">@subscriptions.Price €</section>
+                            <section class="sub-discount">@subscriptions.Discount %</section>
                             <section class="card-actions">
-                                <a href="#" class="view">View</a>
-                                @if (subscriptions.IsActive == true)
-                                {
-                                    <a href="#" class="edit">Take me</a>
-                                }
+                                <a href="#" class="edit">Take me</a>
                             </section>
-                        }
-                    </article>
+                        </article>
+                    }
                 }
             </section>
         </section>

@@ -95,13 +95,5 @@
             await this.signInManager.SignOutAsync();
             return this.Redirect("/");
         }
-
-        [Authorize(Roles = "Admin")]
-        public async Task<IActionResult> AllUser()
-        {
-            var users = await this.usersService.GetAllUsers();
-
-            return this.View(users);
-        }
     }
 }

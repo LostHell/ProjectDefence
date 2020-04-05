@@ -10,11 +10,11 @@
         <section class="nav">
             <section class="site-wrapper">
                 <nav class="admin-nav">
-                    <a asp-controller="Subscriptions" asp-action="OurSubsctiprions">Subscriptions</a>
-                    <a asp-controller="Classes" asp-action="OurClasses">Classes</a>
-                    <a asp-controller="Users" asp-action="AllUser">Users</a>
-                    <a asp-controller="Trainers" asp-action="Employees" class="active">Trainers</a>
-                    <a asp-controller="Contact" asp-action="ContactMe">Contacts</a>
+                    <a asp-controller="AdminPanel" asp-action="Admin">Subscriptions</a>
+                    <a asp-controller="AdminPanel" asp-action="Classes">Classes</a>
+                    <a asp-controller="AdminPanel" asp-action="AllUser">Users</a>
+                    <a asp-controller="AdminPanel" asp-action="Employees" class="active">Trainers</a>
+                    <a asp-controller="AdminPanel" asp-action="ContactMe">Contacts</a>
                 </nav>
             </section>
         </section>
@@ -36,7 +36,8 @@
                             <section class="trainer-title">@employee.Title</section>
                             <section class="trainer-salary">@employee.Salary €</section>
                             <section class="card-actions">
-                                <a href="#" class="view">View</a>
+                                <a href="#" class="edit">Edit</a>
+                                <a href="#" class="delete">Delete</a>
                             </section>
                         </article>
                     }

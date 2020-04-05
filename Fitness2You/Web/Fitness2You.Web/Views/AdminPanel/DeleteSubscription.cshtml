@@ -2,6 +2,7 @@
 @{
     ViewData["Title"] = "Delete page";
 }
+
 <main class="site-content admin">
     @if (this.User.IsInRole("Admin"))
     {
@@ -9,11 +10,11 @@
         <section class="nav">
             <section class="site-wrapper">
                 <nav class="admin-nav">
-                    <a asp-controller="Subscriptions" asp-action="OurSubsctiprions" class="active">Subscriptions</a>
-                    <a asp-controller="Classes" asp-action="OurClasses">Classes</a>
-                    <a asp-controller="Users" asp-action="AllUser">Users</a>
-                    <a asp-controller="Trainers" asp-action="Employees">Trainers</a>
-                    <a asp-controller="Contact" asp-action="ContactMe">Contacts</a>
+                    <a asp-controller="AdminPanel" asp-action="Admin" class="active">Subscriptions</a>
+                    <a asp-controller="AdminPanel" asp-action="Classes">Classes</a>
+                    <a asp-controller="AdminPanel" asp-action="AllUser">Users</a>
+                    <a asp-controller="AdminPanel" asp-action="Employees">Trainers</a>
+                    <a asp-controller="AdminPanel" asp-action="ContactMe">Contacts</a>
                 </nav>
             </section>
         </section>
@@ -21,7 +22,7 @@
         <section class="site-wrapper">
             <section class="main">
                 <section class="add-section">
-                    <a asp-controller="Subscriptions" asp-action="AddSubscription">
+                    <a asp-controller="AdminPanel" asp-action="AddSubscription">
                         <i class="fas fa-plus-circle"></i>
                     </a>
                 </section>

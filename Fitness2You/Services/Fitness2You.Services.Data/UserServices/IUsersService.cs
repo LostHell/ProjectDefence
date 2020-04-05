@@ -12,7 +12,5 @@
         bool EmailExists(string email);
 
         Task AddUserInRole(string id);
-
-        Task<IList<AllUserViewModel>> GetAllUsers();
     }
 }
