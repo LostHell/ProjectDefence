@@ -12,6 +12,10 @@
         public string Address { get; set; }
 
         [Required]
+        [Range(4, 5)]
+        public int ZipCode { get; set; }
+
+        [Required]
         [MaxLength(30)]
         public string Phone { get; set; }
 

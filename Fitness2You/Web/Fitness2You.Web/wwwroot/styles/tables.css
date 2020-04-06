@@ -8,7 +8,9 @@ table.gridtable {
 }
 
 table.gridtable th {
-    color: #3a3a3a;
+    background-color: #3a3a3a;
+    color: white;
+    padding: 0.75rem;
 }
 
 table.gridtable td {

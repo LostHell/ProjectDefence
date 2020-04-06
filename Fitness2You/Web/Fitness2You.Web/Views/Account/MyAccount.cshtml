@@ -1,0 +1,92 @@
+﻿@model MyAccountInputViewModel
+@{
+    ViewData["Title"] = "My Account";
+}
+
+<main class="site-content user">
+    <h2>Welcome @this.User.Identity.Name!</h2>
+    <section class="site-wrapper">
+        <section class="main">
+
+            <section class="subs">
+                <h5>My subscriptions:</h5>
+                <table class="gridtable">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Price</th>
+                            <th>Started</th>
+                            <th>Ends</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var user in Model.UserSubscription)
+                        {
+                            @if (this.User.Identity.Name == user.User.UserName)
+                            {
+                                @if (user.Subscription.CreatedOn.AddDays(30) >= DateTime.UtcNow && user.Subscription.IsActive == true)
+                                {
+                                    <tr class="datarow">
+                                        <td data-name="Name">@user.Subscription.Name</td>
+                                        <td data-name="Price">@user.Subscription.Price $</td>
+                                        <td data-name="Started">@user.Subscription.CreatedOn.ToString("dd/MM/yyyy")</td>
+                                        <td data-name="Ends">@user.Subscription.CreatedOn.AddDays(30).ToString("dd/MM/yyyy")</td>
+                                    </tr>
+                                }
+                            }
+                        }
+                    </tbody>
+                </table>
+            </section>
+
+            <section class="classes">
+                <h5>My classes:</h5>
+                <table class="gridtable">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Price</th>
+                            <th>Started</th>
+                            <th>Ends</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var user in Model.UserClass)
+                        {
+                            @if (this.User.Identity.Name == user.User.UserName)
+                            {
+                                @if (user.Class.CreatedOn.AddDays(30) >= DateTime.UtcNow && user.Class.IsActive == true)
+                                {
+                                    <tr class="datarow">
+                                        <td data-name="Name">@user.Class.Name</td>
+                                        <td data-name="Price">@user.Class.Price $</td>
+                                        <td data-name="Started">@user.Class.CreatedOn.ToString("dd/MM/yyyy")</td>
+                                        <td data-name="Ends">@user.Class.CreatedOn.AddDays(30).ToString("dd/MM/yyyy")</td>
+                                    </tr>
+                                }
+                            }
+                        }
+                    </tbody>
+                </table>
+            </section>
+
+            <section class="my-data">
+                <h5>My account information:</h5>
+                <article class="my-data-row">
+                    <section>Username:</section>
+                    <section>@Model.UserSubscription.Select(x => x.User).FirstOrDefault(x => x.UserName.ToString() == this.User.Identity.Name)</section>
+                </article>
+                <article class="my-data-row">
+                    <section>Email:</section>
+                    <section>@Model.UserSubscription.Where(x => x.User.UserName == this.User.Identity.Name).Select(x => x.User.Email).FirstOrDefault()</section>
+                </article>
+                <article class="my-data-row">
+                    <section>Password:</section>
+                    <section>
+                        <a asp-controller="Account" asp-action="ChangePassword">Change password</a>
+                    </section>
+                </article>
+            </section>
+        </section>
+    </section>
+</main>
