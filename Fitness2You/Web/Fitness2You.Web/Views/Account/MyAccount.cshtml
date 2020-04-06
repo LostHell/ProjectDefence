@@ -7,7 +7,6 @@
     <h2>Welcome @this.User.Identity.Name!</h2>
     <section class="site-wrapper">
         <section class="main">
-
             <section class="subs">
                 <h5>My subscriptions:</h5>
                 <table class="gridtable">
@@ -15,6 +14,8 @@
                         <tr>
                             <th>Name</th>
                             <th>Price</th>
+                            <th>Discount</th>
+                            <th>Price with Discount</th>
                             <th>Started</th>
                             <th>Ends</th>
                         </tr>
@@ -24,13 +25,15 @@
                         {
                             @if (this.User.Identity.Name == user.User.UserName)
                             {
-                                @if (user.Subscription.CreatedOn.AddDays(30) >= DateTime.UtcNow && user.Subscription.IsActive == true)
+                                @if (user.TakeOn.AddDays(30) >= DateTime.UtcNow && user.Subscription.IsActive == true)
                                 {
                                     <tr class="datarow">
                                         <td data-name="Name">@user.Subscription.Name</td>
                                         <td data-name="Price">@user.Subscription.Price $</td>
-                                        <td data-name="Started">@user.Subscription.CreatedOn.ToString("dd/MM/yyyy")</td>
-                                        <td data-name="Ends">@user.Subscription.CreatedOn.AddDays(30).ToString("dd/MM/yyyy")</td>
+                                        <td data-name="Discount">@user.Subscription.Discount %</td>
+                                        <td data-name="PriceWithDiscount">@(user.Subscription.Price-(user.Subscription.Price*user.Subscription.Discount/100)) $</td>
+                                        <td data-name="Started">@user.TakeOn.ToString("dd/MM/yyyy")</td>
+                                        <td data-name="Ends">@user.TakeOn.AddDays(30).ToString("dd/MM/yyyy")</td>
                                     </tr>
                                 }
                             }
@@ -46,6 +49,8 @@
                         <tr>
                             <th>Name</th>
                             <th>Price</th>
+                            <th>Discount</th>
+                            <th>Price with Discount</th>
                             <th>Started</th>
                             <th>Ends</th>
                         </tr>
@@ -60,8 +65,10 @@
                                     <tr class="datarow">
                                         <td data-name="Name">@user.Class.Name</td>
                                         <td data-name="Price">@user.Class.Price $</td>
-                                        <td data-name="Started">@user.Class.CreatedOn.ToString("dd/MM/yyyy")</td>
-                                        <td data-name="Ends">@user.Class.CreatedOn.AddDays(30).ToString("dd/MM/yyyy")</td>
+                                        <td data-name="Discount">@user.Class.Discount %</td>
+                                        <td data-name="PriceWithDiscount">@(user.Class.Price-(user.Class.Price*user.Class.Discount/100)) $</td>
+                                        <td data-name="Started">@user.TakeOn.ToString("dd/MM/yyyy")</td>
+                                        <td data-name="Ends">@user.TakeOn.AddDays(30).ToString("dd/MM/yyyy")</td>
                                     </tr>
                                 }
                             }

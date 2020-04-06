@@ -8,5 +8,7 @@
     public interface ISubscriptionsServices
     {
         Task<IList<SubscriptionsInputViewModel>> GetAll();
+
+        Task AddUserToSubscription(int id, string username);
     }
 }

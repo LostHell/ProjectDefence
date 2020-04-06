@@ -8,5 +8,7 @@
     public interface IClassesServices
     {
         Task<IList<ClassesInputViewModel>> GetClasses();
+
+        Task AddUserToClass(int id, string username);
     }
 }

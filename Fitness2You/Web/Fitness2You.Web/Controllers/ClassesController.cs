@@ -21,5 +21,20 @@
             var classes = await this.classesServices.GetClasses();
             return this.View(classes);
         }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> OurClasses(int? id)
+        {
+            var username = this.User.Identity.Name;
+
+            if (id == null || username == null)
+            {
+                return this.NotFound();
+            }
+
+            await this.classesServices.AddUserToClass((int)id, username);
+            return this.Redirect("/Account/MyAccount");
+        }
     }
 }

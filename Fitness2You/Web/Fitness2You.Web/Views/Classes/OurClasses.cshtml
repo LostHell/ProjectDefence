@@ -18,9 +18,13 @@
                             <section class="class-name">@classes.Name</section>
                             <section class="class-price">@classes.Price €</section>
                             <section class="class-discount">@classes.Discount %</section>
-                            <section class="card-actions">
-                                <a href="#" class="edit">Take me</a>
-                            </section>
+                            <form method="post" asp-controller="Classes" asp-action="OurClasses" asp-route-id="@classes.Id">
+                                <section class="card-actions">
+                                    <a asp-controller="Classes" asp-action="OurClasses" asp-route-id="@classes.Id" class="edit">
+                                        <input type="submit" value="Take me" />
+                                    </a>
+                                </section>
+                            </form>
                         </article>
                     }
                 }

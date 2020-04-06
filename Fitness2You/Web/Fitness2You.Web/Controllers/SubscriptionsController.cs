@@ -21,5 +21,20 @@
             var subscriptions = await this.subscriptionsServices.GetAll();
             return this.View(subscriptions);
         }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> OurSubsctiprions(int? id)
+        {
+            var username = this.User.Identity.Name;
+
+            if (id == null || username == null)
+            {
+                return this.NotFound();
+            }
+
+            await this.subscriptionsServices.AddUserToSubscription((int)id, username);
+            return this.Redirect("/Account/MyAccount");
+        }
     }
 }

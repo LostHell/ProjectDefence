@@ -13,15 +13,18 @@
                     {
                         <article class="sub">
                             <section class="sub-img">
-
                                 <img src="@subscriptions.ImageUrl" alt="Image not found!">
                             </section>
                             <section class="sub-name">@subscriptions.Name</section>
                             <section class="sub-price">@subscriptions.Price €</section>
                             <section class="sub-discount">@subscriptions.Discount %</section>
-                            <section class="card-actions">
-                                <a href="#" class="edit">Take me</a>
-                            </section>
+                            <form method="post" asp-controller="Subscriptions" asp-action="OurSubsctiprions" asp-route-id="@subscriptions.Id">
+                                <section class="card-actions">
+                                    <a asp-controller="Subscriptions" asp-action="OurSubsctiprions" asp-route-id="@subscriptions.Id" class="edit">
+                                        <input type="submit" value="Take me" />
+                                    </a>
+                                </section>
+                            </form>
                         </article>
                     }
                 }
