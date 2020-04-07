@@ -1,4 +1,5 @@
-﻿@{
+﻿@model IEnumerable<EmployeeInputViewModel>
+@{
     ViewData["Title"] = "Trainers page";
 }
 
@@ -66,46 +67,19 @@
             <p class="title-headline">Fitness Gym</p>
             <h2>Meet the instructors</h2>
             <section class="instructors">
-                <article class="instructor">
-                    <div class="gradient"></div>
-                    <div class="photo">
-                        <img src="~/img/instructors/t1.png" alt="Photo not found!">
-                    </div>
-                    <section class="instructor-info">
-                        <h6 class="name">Faik Smith</h6>
-                        <p class="title">Personal trainer</p>
-                    </section>
-                </article>
-                <article class="instructor">
-                    <div class="gradient"></div>
-                    <div class="photo">
-                        <img src="~/img/instructors/t2.png" alt="Photo not found!">
-                    </div>
-                    <section class="instructor-info">
-                        <h6 class="name">adada Smith</h6>
-                        <p class="title">Personal trainer</p>
-                    </section>
-                </article>
-                <article class="instructor">
-                    <div class="gradient"></div>
-                    <div class="photo">
-                        <img src="~/img/instructors/t3.png" alt="Photo not found!">
-                    </div>
-                    <section class="instructor-info">
-                        <h6 class="name">Llee Smith</h6>
-                        <p class="title">Personal trainer</p>
-                    </section>
-                </article>
-                <article class="instructor">
-                    <div class="gradient"></div>
-                    <div class="photo">
-                        <img src="~/img/instructors/t4.png" alt="Photo not found!">
-                    </div>
-                    <section class="instructor-info">
-                        <h6 class="name">Dedo Smith</h6>
-                        <p class="title">Personal trainer</p>
-                    </section>
-                </article>
+                @foreach (var trainer in Model)
+                {
+                    <article class="instructor">
+                        <div class="gradient"></div>
+                        <div class="photo">
+                            <img src="@trainer.ImageUrl" alt="Photo not found!">
+                        </div>
+                        <section class="instructor-info">
+                            <h6 class="name">@trainer.Fullname</h6>
+                            <p class="title">@trainer.Title</p>
+                        </section>
+                    </article>
+                }
             </section>
         </section>
     </section>

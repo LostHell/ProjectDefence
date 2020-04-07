@@ -6,6 +6,7 @@
     using Fitness2You.Web.ViewModels.Class;
     using Fitness2You.Web.ViewModels.Subscription;
     using Fitness2You.Web.ViewModels.Trainer;
+    using Fitness2You.Web.ViewModels.User;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
 
@@ -120,9 +121,19 @@
 
         public async Task<IActionResult> AllUser()
         {
-            var users = await this.adminServices.GetAllUsers();
+            AllUserWithRoleViewModel view = new AllUserWithRoleViewModel();
+            view.User = await this.adminServices.GetAllUsers();
+            view.UserRole = await this.adminServices.GetUserRole();
+            view.Role = await this.adminServices.GetRole();
+            return this.View(view);
+        }
 
-            return this.View(users);
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> AllUser(string username)
+        {
+            await this.adminServices.ChangeRole(username);
+            return this.Redirect("/AdminPanel/AllUser");
         }
 
         public async Task<IActionResult> Employees()

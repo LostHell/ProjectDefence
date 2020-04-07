@@ -20,7 +20,13 @@
 
         Task DeleteClassAsync(ClassesInputViewModel classes);
 
-        Task<IList<AllUserViewModel>> GetAllUsers();
+        Task<IList<UserInputViewModel>> GetAllUsers();
+
+        Task<IList<UserRoleInputViewModel>> GetUserRole();
+
+        Task<IList<RoleInputViewModel>> GetRole();
+
+        Task ChangeRole(string username);
 
         Task<IList<EmployeeInputViewModel>> GetEmployees();
 

@@ -1,4 +1,4 @@
-﻿@model IList<AllUserViewModel>
+﻿@model AllUserWithRoleViewModel
 @{
     ViewData["Title"] = "Users page";
 }
@@ -31,19 +31,23 @@
                             <tr>
                                 <th>ID</th>
                                 <th>Username</th>
+                                <th>Role</th>
                                 <th>Email</th>
-                                <th>Actions</th>
+                                <th>Role</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach (var allUser in Model)
+                            @foreach (var userRole in Model.UserRole)
                             {
                                 <tr class="datarow">
-                                    <td data-name="ID">@allUser.Id</td>
-                                    <td data-name="Username">@allUser.Username</td>
-                                    <td data-name="Email">@allUser.Email</td>
+                                    <td data-name="ID">@Model.User.Where(x => x.Id == userRole.UserId).Select(x => x.Id).FirstOrDefault()</td>
+                                    <td data-name="Username">@Model.User.Where(x => x.Id == userRole.UserId).Select(x => x.Username).FirstOrDefault()</td>
+                                    <td data-name="Role">@Model.Role.Where(x => x.Id == userRole.RoleId).Select(x => x.Name).FirstOrDefault()</td>
+                                    <td data-name="Email">@Model.User.Where(x => x.Id == userRole.UserId).Select(x => x.Email).FirstOrDefault()</td>
                                     <td data-name="Actions" class="card-actions">
-                                        <a href="#" class="view">View</a>
+                                        <form method="post" asp-controller="AdminPanel" asp-action="AllUser" asp-route-username="@Model.User.Where(x=>x.Id==userRole.UserId).Select(x=>x.Username).FirstOrDefault()">
+                                            <input type="submit" value="Change Role" />
+                                        </form>
                                     </td>
                                 </tr>
                             }

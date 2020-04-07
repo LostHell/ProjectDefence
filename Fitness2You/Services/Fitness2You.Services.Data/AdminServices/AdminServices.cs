@@ -12,23 +12,30 @@
     using Fitness2You.Web.ViewModels.Subscription;
     using Fitness2You.Web.ViewModels.Trainer;
     using Fitness2You.Web.ViewModels.User;
+    using Microsoft.AspNetCore.Identity;
     using Microsoft.EntityFrameworkCore;
 
     public class AdminServices : IAdminServices
     {
         private readonly IRepository<Subscription> repositorySubscription;
         private readonly IRepository<Class> repositoryClass;
+        private readonly IRepository<IdentityUserRole<string>> repositoryUserRole;
+        private readonly IRepository<ApplicationRole> repositoryRole;
         private readonly IRepository<ApplicationUser> repositoryUser;
         private readonly IRepository<Trainer> repositoryTrainer;
 
         public AdminServices(
             IRepository<Subscription> repositorySubscription,
             IRepository<Class> repositoryClass,
+            IRepository<IdentityUserRole<string>> repositoryUserRole,
+            IRepository<ApplicationRole> repositoryRole,
             IRepository<ApplicationUser> repositoryUser,
             IRepository<Trainer> repositoryTrainer)
         {
             this.repositorySubscription = repositorySubscription;
             this.repositoryClass = repositoryClass;
+            this.repositoryUserRole = repositoryUserRole;
+            this.repositoryRole = repositoryRole;
             this.repositoryUser = repositoryUser;
             this.repositoryTrainer = repositoryTrainer;
         }
@@ -118,12 +125,64 @@
         }
 
         // Finish Class Services
-        public async Task<IList<AllUserViewModel>> GetAllUsers()
+
+        // Start User Service
+        public async Task<IList<UserInputViewModel>> GetAllUsers()
         {
-            var allUsers = await this.repositoryUser.All().To<AllUserViewModel>().ToListAsync();
+            var allUsers = await this.repositoryUser.All().To<UserInputViewModel>().ToListAsync();
 
             return allUsers;
         }
+
+        public async Task<IList<UserRoleInputViewModel>> GetUserRole()
+        {
+            var userRole = await this.repositoryUserRole.All().To<UserRoleInputViewModel>().ToListAsync();
+
+            return userRole;
+        }
+
+        public async Task<IList<RoleInputViewModel>> GetRole()
+        {
+            var role = await this.repositoryRole.All().To<RoleInputViewModel>().ToListAsync();
+
+            return role;
+        }
+
+        public async Task ChangeRole(string username)
+        {
+            var userRepo = await this.repositoryUser.All().FirstOrDefaultAsync(x => x.UserName == username);
+            var userRoleRepo = await this.repositoryUserRole.All().Where(x => x.UserId == userRepo.Id).FirstOrDefaultAsync();
+            var roleRepo = await this.repositoryRole.All().ToListAsync();
+
+            var userRole = roleRepo.Where(x => x.Name == "User").Select(x => x.Id).FirstOrDefault();
+            var adminRole = roleRepo.Where(x => x.Name == "Admin").Select(x => x.Id).FirstOrDefault();
+
+            if (userRoleRepo.RoleId == userRole)
+            {
+                this.repositoryUserRole.Delete(userRoleRepo);
+
+                userRoleRepo = new IdentityUserRole<string>()
+                {
+                    UserId = userRepo.Id,
+                    RoleId = adminRole,
+                };
+            }
+            else if (userRoleRepo.RoleId == adminRole)
+            {
+                this.repositoryUserRole.Delete(userRoleRepo);
+
+                userRoleRepo = new IdentityUserRole<string>()
+                {
+                    UserId = userRepo.Id,
+                    RoleId = userRole,
+                };
+            }
+
+            await this.repositoryUserRole.AddAsync(userRoleRepo);
+            await this.repositoryUserRole.SaveChangesAsync();
+        }
+
+        // Finish User Service
 
         // Start Employee Service
         public async Task<IList<EmployeeInputViewModel>> GetEmployees()
