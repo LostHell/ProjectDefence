@@ -1,4 +1,5 @@
-﻿@{
+﻿@model NewsletterInputViewModel
+@{
     ViewData["Title"] = "Index Page";
 }
 
@@ -7,7 +8,15 @@
         <article class="bg-img-content">
             <h1>Get fit & healthy.</h1>
             <p>On the beautiful island of Fuerteventura. Retreat Yourself.</p>
-            <a href="#" class="link light">Read more</a>
+            <a href="https://en.wikipedia.org/wiki/Physical_fitness" class="link light">Read more</a>
+            @if (this.User.Identity.IsAuthenticated)
+            {
+                <a asp-controller="Trainers" asp-action="OurTrainers" class="link light">Our Trainers</a>
+            }
+            else
+            {
+                <a asp-controller="Users" asp-action="Login" class="link light">Our Trainers</a>
+            }
         </article>
     </section>
     <section class="site-wrapper">
@@ -16,8 +25,16 @@
             <article class="why-us-content">
                 <section class="why-us-text">
                     <p class="description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias esse nam nihil quasi similique, sint ullam unde voluptatum! Assumenda exercitationem ratione repudiandae similique tempore. Commodi est illo officia provident rem. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias esse nam nihil quasi similique, sint ullam unde voluptatum! Assumenda exercitationem ratione repudiandae similique tempore. Commodi est illo officia provident rem.</p>
-                    <a href="#" class="link light">Get a membership</a>
-                    <a href="#" class="link dark">Find out more</a>
+                    @if (this.User.Identity.IsAuthenticated)
+                    {
+                        <a asp-controller="Subscriptions" asp-action="OurSubsctiprions" class="link light">Get a membership</a>
+                        <a asp-controller="Classes" asp-action="OurClasses" class="link dark">Get a class</a>
+                    }
+                    else
+                    {
+                        <a asp-controller="Users" asp-action="Login" class="link light">Get a membership</a>
+                        <a asp-controller="Users" asp-action="Login" class="link dark">Get a class</a>
+                    }
                 </section>
                 <section class="why-us-img">
                     <img src="~/img/man.png" alt="Image Not Found">
@@ -119,12 +136,15 @@
             </article>
             <article class="newsletter">
                 <h2>Our Newsletter</h2>
-                <form>
+                <form asp-controller="Home" asp-action="Index" method="post">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                     <section class="form-label">
-                        <input type="text" name="name" placeholder="Your name.." />
+                        <input type="text" asp-for="Fullname" placeholder="Your name.." />
+                        <span asp-validation-for="Fullname" class="text-danger"></span>
                     </section>
                     <section class="form-label">
-                        <input type="email" name="email" placeholder="Your email.." />
+                        <input type="email" asp-for="Email" placeholder="Your email.." />
+                        <span asp-validation-for="Email" class="text-danger"></span>
                     </section>
                     <section class="form-label">
                         <span class="description">*Donec id mattis est. Proin nunc sapien, gravida ut sapien ut, ultrices faucibus sapien. Proin vehicula varius ex, vel feugiat massa scelerisque id.</span>

@@ -12,6 +12,7 @@
     using Fitness2You.Services.Data.AdminServices;
     using Fitness2You.Services.Data.ClassService;
     using Fitness2You.Services.Data.FooterServices;
+    using Fitness2You.Services.Data.HomeServices;
     using Fitness2You.Services.Data.SubscriptionsServices;
     using Fitness2You.Services.Data.TrainerServices;
     using Fitness2You.Services.Data.UserServices;
@@ -64,6 +65,7 @@
 
             // Application services
             services.AddTransient<IEmailSender, NullMessageSender>();
+            services.AddTransient<IHomeServices, HomeServices>();
             services.AddTransient<IFooterServices, FooterServices>();
             services.AddTransient<IUsersService, UsersService>();
             services.AddTransient<ISubscriptionsServices, SubscriptionsServices>();
