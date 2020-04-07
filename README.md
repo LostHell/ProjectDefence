@@ -17,6 +17,11 @@ Fitness2You project defence - SoftUni (E.Karadzhov - losthell)
 14. Added Controller - Account, Classes, Subscriptions, Trainers
 15. Added Views Account, Classes, Subscriptions, Trainers
 16. Added AdminPanel with CRUD, IAdminServices with CRUD logic
+	--Subscriptions CRUD
+	--Classes CRUD
+	--Users only Read user and Update role
+	--Trainers CRUD
+	--Contacts not implemented
 17. Change button rout on Index Page
 
 Att! Must implementing code in IFooterServices/FooterServices for Class and Contact
