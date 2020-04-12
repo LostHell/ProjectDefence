@@ -3,6 +3,19 @@
     ViewData["Title"] = "Register page";
 }
 
+@*<script>
+        function Register() {
+            var xhr = new XMLHttpRequest
+            xhr.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    alert("Your account is ready to use!")
+                }
+            }
+            xhr.open("GET", "/Users/Register", true);
+            xhr.send();
+        }
+    </script>*@
+
 <main class="site-content register">
     <section class="site-wrapper">
         <h2 class="section-title">Register your account</h2>
@@ -38,7 +51,7 @@
                         <span asp-validation-for="RepeatPassword" class="text-danger"></span>
                     </section>
                     <section class="form-label">
-                        <input type="submit" value="Register">
+                        <input type="submit" onclick="Register()" value="Register">
                     </section>
                 </form>
             </section>
