@@ -3,6 +3,7 @@
     using System.Collections.Generic;
     using System.Threading.Tasks;
 
+    using Fitness2You.Data.Models;
     using Fitness2You.Web.ViewModels.Class;
     using Fitness2You.Web.ViewModels.Subscription;
     using Fitness2You.Web.ViewModels.Trainer;
@@ -21,6 +22,8 @@
         Task DeleteClassAsync(ClassesInputViewModel classes);
 
         Task<IList<UserInputViewModel>> GetAllUsers();
+
+        Task<ApplicationUser> GetUser(string username);
 
         Task<IList<UserRoleInputViewModel>> GetUserRole();
 

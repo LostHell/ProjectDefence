@@ -18,9 +18,9 @@
                             <section class="sub-name">@subscriptions.Name</section>
                             <section class="sub-price">@subscriptions.Price €</section>
                             <section class="sub-discount">@subscriptions.Discount %</section>
-                            <form method="post" asp-controller="Subscriptions" asp-action="OurSubsctiprions" asp-route-id="@subscriptions.Id">
+                            <form method="post" asp-controller="Subscriptions" asp-action="OurSubscriptions" asp-route-id="@subscriptions.Id">
                                 <section class="card-actions">
-                                    <a asp-controller="Subscriptions" asp-action="OurSubsctiprions" asp-route-id="@subscriptions.Id" class="edit">
+                                    <a asp-controller="Subscriptions" asp-action="OurSubscriptions" asp-route-id="@subscriptions.Id" class="edit">
                                         <input type="submit" value="Take me" />
                                     </a>
                                 </section>

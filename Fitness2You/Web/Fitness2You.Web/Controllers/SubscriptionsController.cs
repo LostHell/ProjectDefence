@@ -16,7 +16,7 @@
             this.subscriptionsServices = subscriptionsServices;
         }
 
-        public async Task<IActionResult> OurSubsctiprions()
+        public async Task<IActionResult> OurSubscriptions()
         {
             var subscriptions = await this.subscriptionsServices.GetAll();
             return this.View(subscriptions);
@@ -24,7 +24,7 @@
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> OurSubsctiprions(int? id)
+        public async Task<IActionResult> OurSubscriptions(int? id)
         {
             var username = this.User.Identity.Name;
 
@@ -33,7 +33,13 @@
                 return this.NotFound();
             }
 
-            await this.subscriptionsServices.AddUserToSubscription((int)id, username);
+            var subsInfo = await this.subscriptionsServices.AddUserToSubscription((int)id, username);
+
+            if (subsInfo == "You have this Subscription!")
+            {
+                return this.Redirect("/Subscriptions/OurSubscriptions");
+            }
+
             return this.Redirect("/Account/MyAccount");
         }
     }

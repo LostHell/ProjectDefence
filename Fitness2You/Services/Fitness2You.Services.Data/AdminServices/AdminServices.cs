@@ -182,6 +182,13 @@
             await this.repositoryUserRole.SaveChangesAsync();
         }
 
+        public async Task<ApplicationUser> GetUser(string username)
+        {
+            var user = await this.repositoryUser.All().FirstOrDefaultAsync(x => x.UserName == username);
+
+            return user;
+        }
+
         // Finish User Service
 
         // Start Employee Service

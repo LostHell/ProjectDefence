@@ -33,7 +33,13 @@
                 return this.NotFound();
             }
 
-            await this.classesServices.AddUserToClass((int)id, username);
+            var classInfo = await this.classesServices.AddUserToClass((int)id, username);
+
+            if (classInfo == "You have this Class!")
+            {
+                return this.Redirect("/Classes/OurClasses");
+            }
+
             return this.Redirect("/Account/MyAccount");
         }
     }

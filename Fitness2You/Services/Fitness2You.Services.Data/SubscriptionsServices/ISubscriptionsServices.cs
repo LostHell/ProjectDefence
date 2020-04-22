@@ -9,6 +9,6 @@
     {
         Task<IList<SubscriptionsInputViewModel>> GetAll();
 
-        Task AddUserToSubscription(int id, string username);
+        Task<string> AddUserToSubscription(int id, string username);
     }
 }

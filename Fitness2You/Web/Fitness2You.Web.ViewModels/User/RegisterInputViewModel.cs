@@ -10,12 +10,12 @@
         public string Username { get; set; }
 
         [Required(ErrorMessage = "Email address is Required.")]
-        [EmailAddress]
+        [RegularExpression(@"^[A-z0-9\.]{3,30}\@[A-z]{3,11}\.[A-z]{2,7}$", ErrorMessage = "Invalid Email address!")]
         public string Email { get; set; }
 
         [Required(ErrorMessage = "Phone number is Required.")]
         [Phone]
-        [StringLength(20, MinimumLength = 6)]
+        [RegularExpression("^[0]{1}[8]{1}[7-9]{1}[0-9]{7}$", ErrorMessage = "Your phone must be 10 digits and starting 087/088/089...")]
         public string PhoneNumber { get; set; }
 
         [Required(ErrorMessage = "Password is Required.")]

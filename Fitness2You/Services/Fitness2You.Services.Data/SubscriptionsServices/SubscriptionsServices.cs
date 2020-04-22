@@ -27,19 +27,28 @@
             this.userSubscriptionRepository = userSubscriptionRepository;
         }
 
-        public async Task AddUserToSubscription(int id, string username)
+        public async Task<string> AddUserToSubscription(int id, string username)
         {
             var user = this.userRepository.All().FirstOrDefault(x => x.UserName == username);
 
-            var userToSubscription = new UserSubscription()
-            {
-                SubscriptionId = id,
-                UserId = user.Id,
-                TakeOn = DateTime.UtcNow,
-            };
+            var userSubs = this.userSubscriptionRepository.All().FirstOrDefault(x => x.UserId == user.Id && x.SubscriptionId == id);
 
-            await this.userSubscriptionRepository.AddAsync(userToSubscription);
-            await this.userSubscriptionRepository.SaveChangesAsync();
+            if (userSubs == null)
+            {
+                var userToSubscription = new UserSubscription()
+                {
+                    SubscriptionId = id,
+                    UserId = user.Id,
+                    TakeOn = DateTime.UtcNow,
+                };
+
+                await this.userSubscriptionRepository.AddAsync(userToSubscription);
+                await this.userSubscriptionRepository.SaveChangesAsync();
+
+                return "You have new Subscription!";
+            }
+
+            return "You have this Subscription!";
         }
 
         public async Task<IList<SubscriptionsInputViewModel>> GetAll()

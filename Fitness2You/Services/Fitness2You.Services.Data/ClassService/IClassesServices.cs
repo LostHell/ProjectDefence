@@ -9,6 +9,6 @@
     {
         Task<IList<ClassesInputViewModel>> GetClasses();
 
-        Task AddUserToClass(int id, string username);
+        Task<string> AddUserToClass(int id, string username);
     }
 }

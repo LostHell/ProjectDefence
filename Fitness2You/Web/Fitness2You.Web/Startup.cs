@@ -1,5 +1,6 @@
 ﻿namespace Fitness2You.Web
 {
+    using System;
     using System.Reflection;
 
     using Fitness2You.Data;
@@ -19,10 +20,10 @@
     using Fitness2You.Services.Mapping;
     using Fitness2You.Services.Messaging;
     using Fitness2You.Web.ViewModels;
-
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.AspNetCore.Http;
+    using Microsoft.AspNetCore.Identity;
     using Microsoft.EntityFrameworkCore;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
@@ -43,6 +44,19 @@
             services.AddDbContext<ApplicationDbContext>(
                 options => options.UseSqlServer(this.configuration.GetConnectionString("DefaultConnection")));
 
+            // Service for make Cache
+            // services.AddDistributedSqlServerCache(options =>
+            // {
+            //    options.ConnectionString = this.configuration.GetConnectionString("DefaultConnection");
+            //    options.SchemaName = "dbo";
+            //    options.TableName = "CacheRecords";
+            // });
+            // services.AddSession(options =>
+            // {
+            //    options.IdleTimeout = TimeSpan.FromDays(2);
+            //    options.Cookie.HttpOnly = true;
+            //    options.Cookie.IsEssential = true;
+            // });
             services.AddDefaultIdentity<ApplicationUser>(IdentityOptionsProvider.GetIdentityOptions)
                 .AddRoles<ApplicationRole>().AddEntityFrameworkStores<ApplicationDbContext>();
 
@@ -51,7 +65,25 @@
                     {
                         options.CheckConsentNeeded = context => true;
                         options.MinimumSameSitePolicy = SameSiteMode.None;
+                        options.ConsentCookie.Name = "Fitness2YouCookie";
+                        options.ConsentCookie.Expiration = TimeSpan.FromDays(2);
                     });
+
+            // Change route Authorize attribute
+            services.ConfigureApplicationCookie(options =>
+            {
+                options.LoginPath = "/Users/Login";
+                options.ExpireTimeSpan = TimeSpan.FromDays(2);
+                options.Cookie.Name = "Fitness2You_Cookie";
+                options.Cookie.SameSite = SameSiteMode.Strict;
+            });
+
+            // Service for LogOut User after change Role
+            services.Configure<SecurityStampValidatorOptions>(options =>
+            {
+                // enables immediate logout, after updating the user's stat.
+                options.ValidationInterval = TimeSpan.Zero;
+            });
 
             services.AddControllersWithViews();
             services.AddRazorPages();
@@ -84,11 +116,7 @@
             using (var serviceScope = app.ApplicationServices.CreateScope())
             {
                 var dbContext = serviceScope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
-
-                if (env.IsDevelopment())
-                {
-                    dbContext.Database.Migrate();
-                }
+                dbContext.Database.Migrate();
 
                 // new ApplicationDbContextSeeder().SeedAsync(dbContext, serviceScope.ServiceProvider).GetAwaiter().GetResult();
                 new AdminUserAndRoleSeeder(dbContext, serviceScope.ServiceProvider).SeedDataAsync().GetAwaiter().GetResult();

@@ -27,19 +27,28 @@
             this.userClassRepository = userClassRepository;
         }
 
-        public async Task AddUserToClass(int id, string username)
+        public async Task<string> AddUserToClass(int id, string username)
         {
             var user = this.userRepository.All().FirstOrDefault(x => x.UserName == username);
 
-            var userToClass = new UserClass()
-            {
-                ClassId = id,
-                UserId = user.Id,
-                TakeOn = DateTime.UtcNow,
-            };
+            var userClass = this.userClassRepository.All().FirstOrDefault(x => x.ClassId == id && x.UserId == user.Id);
 
-            await this.userClassRepository.AddAsync(userToClass);
-            await this.userClassRepository.SaveChangesAsync();
+            if (userClass == null)
+            {
+                var userToClass = new UserClass()
+                {
+                    ClassId = id,
+                    UserId = user.Id,
+                    TakeOn = DateTime.UtcNow,
+                };
+
+                await this.userClassRepository.AddAsync(userToClass);
+                await this.userClassRepository.SaveChangesAsync();
+
+                return "You have new Class!";
+            }
+
+            return "You have this Class!";
         }
 
         public async Task<IList<ClassesInputViewModel>> GetClasses()

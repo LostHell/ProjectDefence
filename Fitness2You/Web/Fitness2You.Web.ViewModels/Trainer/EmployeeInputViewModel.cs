@@ -10,7 +10,8 @@
         public string Id { get; set; }
 
         [Required(ErrorMessage = "Fullname is Required!")]
-        [StringLength(80, ErrorMessage = "Fullname must be between 6 and 80 characters long!", MinimumLength = 6)]
+        [RegularExpression(@"^[A-z]{3,}\ [A-z]{4,}$", ErrorMessage = "Fullname must be between 6 and 80 characters long!")]
+        [MaxLength(80, ErrorMessage = "Fullname must be maximum 80 characters long!")]
         public string Fullname { get; set; }
 
         [Required]
@@ -22,7 +23,7 @@
         public string Title { get; set; }
 
         [Required]
-        [Range(0, 10000, ErrorMessage = "Salary must be between 0$ and 10000$")]
+        [Range(0, 10000, ErrorMessage = "Salary must be between 0$ and 10 000$")]
         public decimal Salary { get; set; }
     }
 }

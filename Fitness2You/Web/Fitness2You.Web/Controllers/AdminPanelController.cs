@@ -2,22 +2,28 @@
 {
     using System.Threading.Tasks;
 
+    using Fitness2You.Data.Models;
     using Fitness2You.Services.Data.AdminServices;
     using Fitness2You.Web.ViewModels.Class;
     using Fitness2You.Web.ViewModels.Subscription;
     using Fitness2You.Web.ViewModels.Trainer;
     using Fitness2You.Web.ViewModels.User;
     using Microsoft.AspNetCore.Authorization;
+    using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
 
     [Authorize(Roles = "Admin")]
     public class AdminPanelController : Controller
     {
         private readonly IAdminServices adminServices;
+        private readonly UserManager<ApplicationUser> userManager;
 
-        public AdminPanelController(IAdminServices adminServices)
+        public AdminPanelController(
+            IAdminServices adminServices,
+            UserManager<ApplicationUser> userManager)
         {
             this.adminServices = adminServices;
+            this.userManager = userManager;
         }
 
         public async Task<IActionResult> Admin()
@@ -132,6 +138,8 @@
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> AllUser(string username)
         {
+            var user = await this.adminServices.GetUser(username);
+            await this.userManager.UpdateSecurityStampAsync(user);
             await this.adminServices.ChangeRole(username);
             return this.Redirect("/AdminPanel/AllUser");
         }
