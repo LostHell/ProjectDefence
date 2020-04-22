@@ -1,4 +1,4 @@
-﻿@model NewsletterInputViewModel
+﻿@model HomeViewModel
 @{
     ViewData["Title"] = "Index Page";
 }
@@ -44,60 +44,18 @@
         <section class="benefits">
             <h2>Your benefits</h2>
             <section class="benefits-content">
-                <article class="benefit">
-                    <section class="b-header">
-                        <div class="icon">
-                            <img src="~/img/icons/apple.png" alt="Icon not found!">
-                        </div>
-                        <h6 class="title">Diet specialists</h6>
-                    </section>
-                    <p class="description">Donec id mattis est. Proin nunc sapien, gravida ut sapien ut, ultrices faucibus sapien. Proin vehicula varius ex, vel feugiat massa.</p>
-                </article>
-                <article class="benefit">
-                    <section class="b-header">
-                        <div class="icon">
-                            <img src="~/img/icons/dumbbell.png" alt="Icon not found!">
-                        </div>
-                        <h6 class="title">Business School</h6>
-                    </section>
-                    <p class="description">Proin nunc sapien, gravida ut sapien ut, ultrices faucibus sapien. Proin vehicula varius ex, vel feugiat massa scelerisque id.</p>
-                </article>
-                <article class="benefit">
-                    <section class="b-header">
-                        <div class="icon">
-                            <img src="~/img/icons/lotus-position.png" alt="Icon not found!">
-                        </div>
-                        <h6 class="title">Yoga courses</h6>
-                    </section>
-                    <p class="description">Nullam vulputate a lectus non molestie. Duis at lobortis neque, in maximus leo. Donec nec blandit ex, in finibus tortor.</p>
-                </article>
-                <article class="benefit">
-                    <section class="b-header">
-                        <div class="icon">
-                            <img src="~/img/icons/slim-down.png" alt="Icon not found!">
-                        </div>
-                        <h6 class="title">Fitness PRO</h6>
-                    </section>
-                    <p class="description">Proin nunc sapien, gravida ut sapien ut, ultrices faucibus sapien. Proin vehicula varius ex, vel feugiat massa scelerisque id.</p>
-                </article>
-                <article class="benefit">
-                    <section class="b-header">
-                        <div class="icon">
-                            <img src="~/img/icons/stationary-bike.png" alt="Icon not found!">
-                        </div>
-                        <h6 class="title">Spinning class</h6>
-                    </section>
-                    <p class="description">Nullam vulputate a lectus non molestie. Duis at lobortis neque, in maximus leo. Donec nec blandit ex, in finibus tortor.</p>
-                </article>
-                <article class="benefit">
-                    <section class="b-header">
-                        <div class="icon">
-                            <img src="~/img/icons/swimming.png" alt="Icon not found!">
-                        </div>
-                        <h6 class="title">Swimming pool</h6>
-                    </section>
-                    <p class="description">Proin nunc sapien, gravida ut sapien ut, ultrices faucibus sapien. Proin vehicula varius ex, vel feugiat massa scelerisque id.</p>
-                </article>
+                @foreach (var benefit in Model.Benefits)
+                {
+                    <article class="benefit">
+                        <section class="b-header">
+                            <div class="icon">
+                                <img src="@benefit.ImageUrl" alt="Icon not found!">
+                            </div>
+                            <h6 class="title">@benefit.Name</h6>
+                        </section>
+                        <p class="description">@benefit.Description</p>
+                    </article>
+                }
             </section>
         </section>
         <section class="work-sub">
@@ -139,12 +97,12 @@
                 <form asp-controller="Home" asp-action="Index" method="post">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                     <section class="form-label">
-                        <input type="text" asp-for="Fullname" placeholder="Your name.." />
-                        <span asp-validation-for="Fullname" class="text-danger"></span>
+                        <input type="text" asp-for="@Model.Newsletters.Fullname" placeholder="Your name.." />
+                        <span asp-validation-for="@Model.Newsletters.Fullname" class="text-danger"></span>
                     </section>
                     <section class="form-label">
-                        <input type="email" asp-for="Email" placeholder="Your email.." />
-                        <span asp-validation-for="Email" class="text-danger"></span>
+                        <input type="email" asp-for="@Model.Newsletters.Email" placeholder="Your email.." />
+                        <span asp-validation-for="@Model.Newsletters.Email" class="text-danger"></span>
                     </section>
                     <section class="form-label">
                         <span class="description">*Donec id mattis est. Proin nunc sapien, gravida ut sapien ut, ultrices faucibus sapien. Proin vehicula varius ex, vel feugiat massa scelerisque id.</span>

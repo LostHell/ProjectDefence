@@ -17,26 +17,33 @@
             this.homeServices = homeServices;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return this.View();
+            var benefits = new HomeViewModel();
+            benefits.Benefits = await this.homeServices.GetAllBenefits();
+            return this.View(benefits);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Index(NewsletterInputViewModel newsletter)
+        public async Task<IActionResult> Index(HomeViewModel home)
         {
             if (!this.ModelState.IsValid)
             {
                 this.ModelState.AddModelError(string.Empty, "Invalid newsletter input data!");
-                return this.View(newsletter);
+                return this.View(home.Newsletters);
             }
 
-            await this.homeServices.SendNewsLetter(newsletter);
+            await this.homeServices.SendNewsLetter(home.Newsletters);
             return this.Redirect("/");
         }
 
         public IActionResult Privacy()
+        {
+            return this.View();
+        }
+
+        public IActionResult Location()
         {
             return this.View();
         }
