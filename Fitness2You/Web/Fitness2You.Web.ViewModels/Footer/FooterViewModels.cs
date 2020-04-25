@@ -6,6 +6,6 @@
     {
         public IList<ClassesViewModelInFooter> Classes { get; set; }
 
-        public IList<ContactsViewModelsInFooter> Contacts { get; set; }
+        public ContactsViewModelsInFooter Contacts { get; set; }
     }
 }

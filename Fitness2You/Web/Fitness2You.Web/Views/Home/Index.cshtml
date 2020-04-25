@@ -97,7 +97,7 @@
                 <form asp-controller="Home" asp-action="Index" method="post">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                     <section class="form-label">
-                        <input type="text" asp-for="@Model.Newsletters.Fullname" placeholder="Your name.." />
+                        <input type="text" asp-for="@Model.Newsletters.Fullname" placeholder="Your full name..." />
                         <span asp-validation-for="@Model.Newsletters.Fullname" class="text-danger"></span>
                     </section>
                     <section class="form-label">
@@ -108,7 +108,7 @@
                         <span class="description">*Donec id mattis est. Proin nunc sapien, gravida ut sapien ut, ultrices faucibus sapien. Proin vehicula varius ex, vel feugiat massa scelerisque id.</span>
                     </section>
                     <section class="form-label">
-                        <input type="submit" value="Subscribe" />
+                        <input type="submit" value="Subscribe now" />
                     </section>
                 </form>
             </article>

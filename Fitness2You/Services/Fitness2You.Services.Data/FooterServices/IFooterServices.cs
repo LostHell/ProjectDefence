@@ -7,7 +7,7 @@
 
     public interface IFooterServices
     {
-        Task<IList<ContactsViewModelsInFooter>> GetContacts();
+        Task<ContactsViewModelsInFooter> GetContact();
 
         Task<IList<ClassesViewModelInFooter>> GetClasses();
     }

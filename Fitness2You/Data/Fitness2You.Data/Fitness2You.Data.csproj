@@ -13,6 +13,10 @@
   <ItemGroup>
     <Compile Remove="Migrations\20200413110759_UploadInAzure.cs" />
     <Compile Remove="Migrations\20200413110759_UploadInAzure.Designer.cs" />
+    <Compile Remove="Migrations\20200424160321_LocationCoordinates.cs" />
+    <Compile Remove="Migrations\20200424160321_LocationCoordinates.Designer.cs" />
+    <Compile Remove="Migrations\20200424161626_NewMigration24.04.cs" />
+    <Compile Remove="Migrations\20200424161626_NewMigration24.04.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

@@ -42,10 +42,10 @@
                     Email = newsletter.Email,
                     SendOn = DateTime.UtcNow,
                 };
-            }
 
-            await this.repositoryNewsletter.AddAsync(findNewsletter);
-            await this.repositoryNewsletter.SaveChangesAsync();
+                await this.repositoryNewsletter.AddAsync(findNewsletter);
+                await this.repositoryNewsletter.SaveChangesAsync();
+            }
         }
     }
 }

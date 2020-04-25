@@ -18,7 +18,10 @@
                 <a asp-controller="Classes" asp-action="OurClasses">Our Classes</a>
             </li>
             <li>
-                <a asp-controller="Home" asp-action="Location">Our Location</a>
+                <a asp-controller="Locations" asp-action="OurLocation">Our Location</a>
+            </li>
+            <li>
+                <a asp-controller="Home" asp-action="Privacy">Privacy</a>
             </li>
             @if (this.User.IsInRole("Admin"))
             {

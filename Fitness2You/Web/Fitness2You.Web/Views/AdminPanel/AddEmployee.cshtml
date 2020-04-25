@@ -14,7 +14,6 @@
                     <a asp-controller="AdminPanel" asp-action="Classes">Classes</a>
                     <a asp-controller="AdminPanel" asp-action="AllUser">Users</a>
                     <a asp-controller="AdminPanel" asp-action="Employees" class="active">Trainers</a>
-                    <a asp-controller="AdminPanel" asp-action="ContactMe">Contacts</a>
                 </nav>
             </section>
         </section>
@@ -25,23 +24,23 @@
                     <form method="post" class="contacts-form" asp-controller="AdminPanel" asp-action="AddEmployee">
                         <div asp-validation-summary="ModelOnly"></div>
                         <section class="form-label">
-                            <input type="text" asp-for="Fullname" placeholder="Employee fullname...">
+                            <input type="text" asp-for="Fullname" placeholder="Please write here - Employee fullname...">
                             <i class="fas fa-file-signature"></i>
                             <span asp-validation-for="Fullname" class="text-danger"></span>
                         </section>
                         <section class="form-label">
-                            <input type="text" asp-for="ImageUrl" placeholder="https://...">
+                            <input type="text" asp-for="ImageUrl" placeholder="Please paste link of picture from your new employee https://...">
                             <i class="far fa-file-image"></i>
                             <span asp-validation-for="ImageUrl" class="text-danger"></span>
                         </section>
                         <section class="form-label">
-                            <input type="text" asp-for="Salary" placeholder="Salary...">
+                            <input type="text" asp-for="Salary" placeholder="Your new employee salary...">
                             <i class="fas fa-dollar-sign"></i>
                             <span asp-validation-for="Salary" class="text-danger"></span>
                         </section>
                         <section class="form-label">
-                            <input type="text" asp-for="Title" placeholder="Title...">
-                            <i class="fas fa-percent"></i>
+                            <input type="text" asp-for="Title" placeholder="What position does your new employee take...">
+                            <i class="fas fa-crown"></i>
                             <span asp-validation-for="Title" class="text-danger"></span>
                         </section>
                         <section class="form-label">

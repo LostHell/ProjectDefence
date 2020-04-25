@@ -40,6 +40,8 @@
 
         public DbSet<Newsletter> Newsletters { get; set; }
 
+        public DbSet<Location> Locations { get; set; }
+
         public override int SaveChanges() => this.SaveChanges(true);
 
         public override int SaveChanges(bool acceptAllChangesOnSuccess)

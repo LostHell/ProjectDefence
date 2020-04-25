@@ -22,9 +22,9 @@
             this.repositoryClass = repositoryClass;
         }
 
-        public async Task<IList<ContactsViewModelsInFooter>> GetContacts()
+        public async Task<ContactsViewModelsInFooter> GetContact()
         {
-            var contacs = await this.repositoryContact.All().To<ContactsViewModelsInFooter>().ToListAsync();
+            var contacs = await this.repositoryContact.All().To<ContactsViewModelsInFooter>().LastOrDefaultAsync();
 
             return contacs;
         }

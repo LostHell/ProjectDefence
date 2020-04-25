@@ -14,6 +14,7 @@
     using Fitness2You.Services.Data.ClassService;
     using Fitness2You.Services.Data.FooterServices;
     using Fitness2You.Services.Data.HomeServices;
+    using Fitness2You.Services.Data.LocationServices;
     using Fitness2You.Services.Data.SubscriptionsServices;
     using Fitness2You.Services.Data.TrainerServices;
     using Fitness2You.Services.Data.UserServices;
@@ -105,6 +106,7 @@
             services.AddTransient<ITrainersServices, TrainersServices>();
             services.AddTransient<IAdminServices, AdminServices>();
             services.AddTransient<IAccountServices, AccountServices>();
+            services.AddTransient<ILocationsService, LocationsService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -18,7 +18,9 @@
     public class AdminServices : IAdminServices
     {
         private readonly IRepository<Subscription> repositorySubscription;
+        private readonly IRepository<UserSubscription> repositoryUserSubscription;
         private readonly IRepository<Class> repositoryClass;
+        private readonly IRepository<UserClass> repositoryUserClass;
         private readonly IRepository<IdentityUserRole<string>> repositoryUserRole;
         private readonly IRepository<ApplicationRole> repositoryRole;
         private readonly IRepository<ApplicationUser> repositoryUser;
@@ -26,14 +28,18 @@
 
         public AdminServices(
             IRepository<Subscription> repositorySubscription,
+            IRepository<UserSubscription> repositoryUserSubscription,
             IRepository<Class> repositoryClass,
+            IRepository<UserClass> repositoryUserClass,
             IRepository<IdentityUserRole<string>> repositoryUserRole,
             IRepository<ApplicationRole> repositoryRole,
             IRepository<ApplicationUser> repositoryUser,
             IRepository<Trainer> repositoryTrainer)
         {
             this.repositorySubscription = repositorySubscription;
+            this.repositoryUserSubscription = repositoryUserSubscription;
             this.repositoryClass = repositoryClass;
+            this.repositoryUserClass = repositoryUserClass;
             this.repositoryUserRole = repositoryUserRole;
             this.repositoryRole = repositoryRole;
             this.repositoryUser = repositoryUser;
@@ -74,14 +80,14 @@
 
         public async Task<ClassesInputViewModel> GetClassIdAsync(int? id)
         {
-            var subscription = await this.repositoryClass.All().To<ClassesInputViewModel>().FirstOrDefaultAsync(x => x.Id == id);
+            var classes = await this.repositoryClass.All().To<ClassesInputViewModel>().FirstOrDefaultAsync(x => x.Id == id);
 
-            return subscription;
+            return classes;
         }
 
-        public async Task EditClassAsync(ClassesInputViewModel subscriptions)
+        public async Task EditClassAsync(ClassesInputViewModel classes)
         {
-            var currentClass = this.repositoryClass.All().FirstOrDefault(x => x.Id == subscriptions.Id);
+            var currentClass = this.repositoryClass.All().FirstOrDefault(x => x.Id == classes.Id);
 
             if (currentClass != null)
             {
@@ -89,21 +95,21 @@
 
                 currentClass = new Class
                 {
-                    Id = subscriptions.Id,
-                    Name = subscriptions.Name,
-                    ImageUrl = subscriptions.ImageUrl,
-                    Price = subscriptions.Price,
+                    Id = classes.Id,
+                    Name = classes.Name,
+                    ImageUrl = classes.ImageUrl,
+                    Price = classes.Price,
                     CreatedOn = DateTime.UtcNow,
-                    IsActive = subscriptions.IsActive,
+                    IsActive = classes.IsActive,
                 };
 
-                if (subscriptions.Discount == null)
+                if (classes.Discount == null)
                 {
                     currentClass.Discount = 0;
                 }
                 else
                 {
-                    currentClass.Discount = subscriptions.Discount;
+                    currentClass.Discount = classes.Discount;
                 }
 
                 await this.repositoryClass.AddAsync(currentClass);
@@ -114,13 +120,19 @@
 
         public async Task DeleteClassAsync(ClassesInputViewModel classes)
         {
-            var currentClass = this.repositoryClass.All().FirstOrDefault(x => x.Id == classes.Id);
+            var currentUserClass = await this.repositoryUserClass.All().FirstOrDefaultAsync(x => x.ClassId == classes.Id);
+            if (currentUserClass != null)
+            {
+                this.repositoryUserClass.Delete(currentUserClass);
+            }
 
+            var currentClass = await this.repositoryClass.All().FirstOrDefaultAsync(x => x.Id == classes.Id);
             if (currentClass != null)
             {
                 this.repositoryClass.Delete(currentClass);
             }
 
+            await this.repositoryUserClass.SaveChangesAsync();
             await this.repositoryClass.SaveChangesAsync();
         }
 
@@ -326,6 +338,13 @@
 
         public async Task DeleteSubscriptionAsync(SubscriptionsInputViewModel subscriptions)
         {
+            var currentUserSubscription = await this.repositoryUserSubscription.All().FirstOrDefaultAsync(x => x.SubscriptionId == subscriptions.Id);
+
+            if (currentUserSubscription != null)
+            {
+                this.repositoryUserSubscription.Delete(currentUserSubscription);
+            }
+
             var subs = this.repositorySubscription.All().FirstOrDefault(x => x.Id == subscriptions.Id);
 
             if (subs != null)
@@ -333,6 +352,7 @@
                 this.repositorySubscription.Delete(subs);
             }
 
+            await this.repositoryUserSubscription.SaveChangesAsync();
             await this.repositorySubscription.SaveChangesAsync();
         }
 

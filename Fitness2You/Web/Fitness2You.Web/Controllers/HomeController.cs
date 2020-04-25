@@ -30,8 +30,11 @@
         {
             if (!this.ModelState.IsValid)
             {
-                this.ModelState.AddModelError(string.Empty, "Invalid newsletter input data!");
-                return this.View(home.Newsletters);
+                var homeView = new HomeViewModel();
+                homeView.Benefits = await this.homeServices.GetAllBenefits();
+                homeView.Newsletters = home.Newsletters;
+                this.ModelState.AddModelError(string.Empty, "Invalid newsletter input data, check your FULLNAME and EMAIL!");
+                return this.View(homeView);
             }
 
             await this.homeServices.SendNewsLetter(home.Newsletters);
@@ -41,18 +44,6 @@
         public IActionResult Privacy()
         {
             return this.View();
-        }
-
-        public IActionResult Location()
-        {
-            return this.View();
-        }
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return this.View(
-                new ErrorViewModel { RequestId = Activity.Current?.Id ?? this.HttpContext.TraceIdentifier });
         }
     }
 }

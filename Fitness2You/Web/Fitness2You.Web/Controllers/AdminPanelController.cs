@@ -238,11 +238,6 @@
             return this.Redirect("/AdminPanel/Employees");
         }
 
-        public IActionResult ContactMe()
-        {
-            return this.View();
-        }
-
         public IActionResult AddSubscription()
         {
             return this.View();
