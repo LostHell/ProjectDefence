@@ -47,4 +47,11 @@
     <ProjectReference Include="..\Fitness2You.Web.Infrastructure\Fitness2You.Web.Infrastructure.csproj" />
     <ProjectReference Include="..\Fitness2You.Web.ViewModels\Fitness2You.Web.ViewModels.csproj" />
   </ItemGroup>
+
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="Areas\Administration\Views\Dashboard\Index.cshtml" />
+    <_ContentIncludedByDefault Remove="Areas\Administration\Views\_ViewImports.cshtml" />
+    <_ContentIncludedByDefault Remove="Areas\Administration\Views\_ViewStart.cshtml" />
+    <_ContentIncludedByDefault Remove="Areas\Identity\Pages\_ViewStart.cshtml" />
+  </ItemGroup>
 </Project>

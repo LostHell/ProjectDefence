@@ -28,7 +28,6 @@
                     <table class="gridtable">
                         <thead>
                             <tr>
-                                <th>ID</th>
                                 <th>Username</th>
                                 <th>Role</th>
                                 <th>Email</th>
@@ -39,7 +38,6 @@
                             @foreach (var userRole in Model.UserRole)
                             {
                                 <tr class="datarow">
-                                    <td data-name="ID">@Model.User.Where(x => x.Id == userRole.UserId).Select(x => x.Id).FirstOrDefault()</td>
                                     <td data-name="Username">@Model.User.Where(x => x.Id == userRole.UserId).Select(x => x.Username).FirstOrDefault()</td>
                                     <td data-name="Role">@Model.Role.Where(x => x.Id == userRole.RoleId).Select(x => x.Name).FirstOrDefault()</td>
                                     <td data-name="Email">@Model.User.Where(x => x.Id == userRole.UserId).Select(x => x.Email).FirstOrDefault()</td>
