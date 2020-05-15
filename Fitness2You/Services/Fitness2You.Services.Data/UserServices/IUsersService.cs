@@ -4,9 +4,9 @@
 
     public interface IUsersService
     {
-        bool UsernameExists(string username);
+        Task<bool> UsernameExists(string username);
 
-        bool EmailExists(string email);
+        Task<bool> EmailExists(string email);
 
         Task AddUserInRole(string id);
     }

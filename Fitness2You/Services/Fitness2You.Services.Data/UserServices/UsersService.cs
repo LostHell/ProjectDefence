@@ -6,6 +6,7 @@
     using Fitness2You.Data.Common.Repositories;
     using Fitness2You.Data.Models;
     using Microsoft.AspNetCore.Identity;
+    using Microsoft.EntityFrameworkCore;
 
     public class UsersService : IUsersService
     {
@@ -43,14 +44,14 @@
             await this.userRoleRepository.SaveChangesAsync();
         }
 
-        public bool EmailExists(string email)
+        public async Task<bool> EmailExists(string email)
         {
-            return this.userRepository.All().Any(x => x.Email == email);
+            return await this.userRepository.All().AnyAsync(x => x.Email == email);
         }
 
-        public bool UsernameExists(string username)
+        public async Task<bool> UsernameExists(string username)
         {
-            return this.userRepository.All().Any(x => x.UserName == username);
+            return await this.userRepository.All().AnyAsync(x => x.UserName == username);
         }
     }
 }

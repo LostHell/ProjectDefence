@@ -64,13 +64,13 @@
                 return this.View(register);
             }
 
-            if (this.usersService.UsernameExists(register.Username))
+            if (await this.usersService.UsernameExists(register.Username))
             {
                 this.ModelState.AddModelError(string.Empty, "Username already exists!");
                 return this.View(register);
             }
 
-            if (this.usersService.EmailExists(register.Email))
+            if (await this.usersService.EmailExists(register.Email))
             {
                 this.ModelState.AddModelError(string.Empty, "Email address already exists!");
                 return this.View(register);
