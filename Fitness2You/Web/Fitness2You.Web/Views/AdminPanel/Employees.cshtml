@@ -6,17 +6,7 @@
 <main class="site-content admin">
     @if (this.User.IsInRole("Admin"))
     {
-        <h2>Welcome ADMIN!</h2>
-        <section class="nav">
-            <section class="site-wrapper">
-                <nav class="admin-nav">
-                    <a asp-controller="AdminPanel" asp-action="Admin">Subscriptions</a>
-                    <a asp-controller="AdminPanel" asp-action="Classes">Classes</a>
-                    <a asp-controller="AdminPanel" asp-action="AllUser">Users</a>
-                    <a asp-controller="AdminPanel" asp-action="Employees" class="active">Trainers</a>
-                </nav>
-            </section>
-        </section>
+        <partial name="AdminNavigationBar/_AdminNavigationBarEmployeeActive" />
         <section class="site-wrapper">
             <section class="main">
                 <section class="add-section">

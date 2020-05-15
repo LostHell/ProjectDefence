@@ -1,0 +1,23 @@
+﻿@model EmployeeInputViewModel
+
+<div asp-validation-summary="ModelOnly"></div>
+<section class="form-label">
+    <input type="text" asp-for="Fullname" placeholder="Employee fullname...">
+    <i class="fas fa-file-signature"></i>
+    <span asp-validation-for="Fullname" class="text-danger"></span>
+</section>
+<section class="form-label">
+    <input type="text" asp-for="ImageUrl" placeholder="https://...">
+    <i class="far fa-file-image"></i>
+    <span asp-validation-for="ImageUrl" class="text-danger"></span>
+</section>
+<section class="form-label">
+    <input type="text" asp-for="Salary" placeholder="Salary...">
+    <i class="fas fa-dollar-sign"></i>
+    <span asp-validation-for="Salary" class="text-danger"></span>
+</section>
+<section class="form-label">
+    <input type="text" asp-for="Title" placeholder="Title...">
+    <i class="fas fa-percent"></i>
+    <span asp-validation-for="Title" class="text-danger"></span>
+</section>

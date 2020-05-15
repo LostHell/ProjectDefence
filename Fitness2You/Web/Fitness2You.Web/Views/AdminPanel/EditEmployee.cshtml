@@ -1,48 +1,17 @@
-﻿@model EmployeeInputViewModel
-@{
+﻿@{
     ViewData["Title"] = "Edit employee";
 }
 
 <main class="site-content admin">
     @if (this.User.IsInRole("Admin"))
     {
-        <h2>Welcome ADMIN!</h2>
-        <section class="nav">
-            <section class="site-wrapper">
-                <nav class="admin-nav">
-                    <a asp-controller="AdminPanel" asp-action="Admin">Subscriptions</a>
-                    <a asp-controller="AdminPanel" asp-action="Classes">Classes</a>
-                    <a asp-controller="AdminPanel" asp-action="AllUser">Users</a>
-                    <a asp-controller="AdminPanel" asp-action="Employees" class="active">Trainers</a>
-                </nav>
-            </section>
-        </section>
+        <partial name="AdminNavigationBar/_AdminNavigationBarEmployeeActive" />
         <section class="site-wrapper">
             <section class="main">
                 <section class="contacts">
                     <h2>Edit Employee</h2>
                     <form method="post" class="contacts-form" asp-controller="AdminPanel" asp-action="EditEmployee">
-                        <div asp-validation-summary="ModelOnly"></div>
-                        <section class="form-label">
-                            <input type="text" asp-for="Fullname" placeholder="Employee fullname...">
-                            <i class="fas fa-file-signature"></i>
-                            <span asp-validation-for="Fullname" class="text-danger"></span>
-                        </section>
-                        <section class="form-label">
-                            <input type="text" asp-for="ImageUrl" placeholder="https://...">
-                            <i class="far fa-file-image"></i>
-                            <span asp-validation-for="ImageUrl" class="text-danger"></span>
-                        </section>
-                        <section class="form-label">
-                            <input type="text" asp-for="Salary" placeholder="Salary...">
-                            <i class="fas fa-dollar-sign"></i>
-                            <span asp-validation-for="Salary" class="text-danger"></span>
-                        </section>
-                        <section class="form-label">
-                            <input type="text" asp-for="Title" placeholder="Title...">
-                            <i class="fas fa-percent"></i>
-                            <span asp-validation-for="Title" class="text-danger"></span>
-                        </section>
+                        <partial name="AdminForms/_AddAndEditFormEmployee" />
                         <section class="form-label">
                             <input type="submit" value="Edit now!">
                         </section>

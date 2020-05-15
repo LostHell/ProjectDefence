@@ -1,0 +1,28 @@
+﻿@model SubscriptionsInputViewModel
+
+<div asp-validation-summary="ModelOnly"></div>
+<section class="form-label">
+    <input type="text" asp-for="Name" placeholder="Name of your new class...">
+    <i class="fas fa-file-signature"></i>
+    <span asp-validation-for="Name" class="text-danger"></span>
+</section>
+<section class="form-label">
+    <input type="text" asp-for="ImageUrl" placeholder="Add your class Image link - https://...">
+    <i class="far fa-file-image"></i>
+    <span asp-validation-for="ImageUrl" class="text-danger"></span>
+</section>
+<section class="form-label">
+    <input type="text" asp-for="Price" placeholder="Price of your class...">
+    <i class="fas fa-dollar-sign"></i>
+    <span asp-validation-for="Price" class="text-danger"></span>
+</section>
+<section class="form-label">
+    <input type="text" asp-for="Discount" placeholder="Discount of your class (Range 0 - 100)...">
+    <i class="fas fa-percent"></i>
+    <span asp-validation-for="Discount" class="text-danger"></span>
+</section>
+<section class="form-label">
+    <input type="text" asp-for="IsActive" placeholder="Do you want to activate this class(True/False)...">
+    <i class="fas fa-check"></i>
+    <span asp-validation-for="IsActive" class="text-danger"></span>
+</section>
